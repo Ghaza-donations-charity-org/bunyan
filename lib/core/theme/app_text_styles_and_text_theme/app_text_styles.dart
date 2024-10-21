@@ -2,8 +2,6 @@ import 'package:flutter/material.dart';
 
 import '../app_colors.dart';
 
-import 'package:flutter/material.dart';
-import '../app_colors.dart';
 
 class AppTextSizes {
   static const double small = 14.0;

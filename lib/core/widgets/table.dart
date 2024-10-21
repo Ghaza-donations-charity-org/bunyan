@@ -1,8 +1,6 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../core/theme/app_colors.dart';
-import '../theme/app_text_styles_and_text_theme/app_text_styles.dart';
 
 class TableWidget extends StatelessWidget {
   final List<Map<String, String>> items;
@@ -60,3 +58,5 @@ class TableWidget extends StatelessWidget {
     );
   }
 }
+
+
