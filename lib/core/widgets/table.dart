@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 
 import '../../../../core/theme/app_colors.dart';
-import '../../../../core/theme/app_theme.dart';
+import '../theme/app_text_styles_and_theme/app_text_styles.dart';
 
 class TableWidget extends StatelessWidget {
   final List<Map<String, String>> items;
@@ -28,7 +28,7 @@ class TableWidget extends StatelessWidget {
       children: [
         if (tableTitle != null)
           Text(tableTitle!,
-              style: AppTextStyles.bodyMediumTextStyle20.copyWith(
+              style: AppTextStyles.bodyLarge.copyWith(
                 fontWeight: FontWeight.w700,
               )),
         ...List.generate(items.length, (index) {
@@ -42,11 +42,11 @@ class TableWidget extends StatelessWidget {
               children: [
                 Text(
                   item['title'] ?? '',
-                  style: titleStyle ?? AppTextStyles.bodySmallTextStyle16,
+                  style: titleStyle ?? AppTextStyles.bodyMedium,
                 ),
                 Text(
                   item['value'] ?? '',
-                  style: valueStyle ?? AppTextStyles.bodySmallTextStyle16,
+                  style: valueStyle ?? AppTextStyles.bodyMedium,
                 ),
               ],
             ),

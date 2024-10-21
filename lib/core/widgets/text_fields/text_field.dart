@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:iconsax_plus/iconsax_plus.dart';
 import '../../app_constants/app_measures.dart';
 import '../../theme/app_colors.dart';
-import '../../theme/app_theme.dart';
+import '../../theme/app_text_styles_and_theme/app_text_styles.dart';
 
 class TextFieldWidget extends StatefulWidget {
   final Color? fillColor;
@@ -127,10 +127,10 @@ class _TextFieldWidgetState extends State<TextFieldWidget> {
           hintText: widget.hintText ?? '',
           labelText: widget.labelText ?? '',
           hintStyle: widget.hintTextStyle ??
-              AppTextStyles.bodySmallTextStyle16
+              AppTextStyles.bodyMedium
                   .copyWith(color: AppColors.textSecondaryColor),
           labelStyle: widget.labelTextStyle ??
-              AppTextStyles.bodySmallTextStyle16.copyWith(
+              AppTextStyles.bodyMedium.copyWith(
                 color: widget.textColor ?? AppColors.textSecondaryColor,
               ),
           filled: widget.filled ?? false,
