@@ -47,6 +47,8 @@ class PermissionsUtilityFunctions {
     return await requestPermission(Permission.camera);
   }
 
+  //some packages require android 13 or above to work properly
+  //this function checks if the device is running android 13 or above
   static Future<bool> _isAndroid13OrAbove() async {
     final deviceInfoPlugin = DeviceInfoPlugin();
     final androidInfo = await deviceInfoPlugin.androidInfo;
