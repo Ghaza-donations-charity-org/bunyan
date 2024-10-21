@@ -2,7 +2,7 @@
 import 'package:flutter/material.dart';
 import '../../../../core/app_constants/app_measures.dart';
 import '../../../../core/theme/app_colors.dart';
-import '../../theme/app_text_styles_and_theme/app_text_styles.dart';
+import '../../theme/app_text_styles_and_text_theme/app_text_styles.dart';
 import '../../utility_functions_and_classes/image_utils.dart';
 import '../../utility_functions_and_classes/screen_utility_functions.dart';
 
@@ -47,7 +47,8 @@ class _MediaSwiperState extends State<MediaSwiper> {
                         alignment: Alignment.centerLeft,
                         child: Text(
                           widget.title!,
-                          style: AppTextStyles.bodyLarge.copyWith(
+                          style: Theme.of(context)
+                              .textTheme.bodyLarge!.copyWith(
                               fontWeight: FontWeight.w600,
                               fontSize: 18,
                               color: AppColors.textPrimaryColor),

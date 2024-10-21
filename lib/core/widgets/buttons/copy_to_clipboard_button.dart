@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:iconsax_plus/iconsax_plus.dart';
 import '../../theme/app_colors.dart';
-import '../../theme/app_text_styles_and_theme/app_text_styles.dart';
+import '../../theme/app_text_styles_and_text_theme/app_text_styles.dart';
 
 class CopyToClipboardButton extends StatelessWidget {
   final String textToCopy;
@@ -22,7 +22,8 @@ class CopyToClipboardButton extends StatelessWidget {
             backgroundColor: AppColors.lightGrey2,
             content: Text(
               'Copied to clipboard',
-              style: AppTextStyles.bodyLarge,
+              style: Theme.of(context)
+                  .textTheme.bodyLarge,
             ),
           ),
         );

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import '../app_constants/app_measures.dart';
 import '../theme/app_colors.dart';
-import '../theme/app_text_styles_and_theme/app_text_styles.dart';
+import '../theme/app_text_styles_and_text_theme/app_text_styles.dart';
 
 class DropDownMenuWidget extends StatefulWidget {
   final Color? fillColor;
@@ -92,7 +92,8 @@ class _DropDownMenuWidgetState extends State<DropDownMenuWidget> {
               ),
           hintText: widget.textController.text,
           hintStyle: widget.hintTextStyle ??
-              AppTextStyles.bodyMedium
+              Theme.of(context)
+                  .textTheme.bodyMedium!
                   .copyWith(color: AppColors.textSecondaryColor),
           filled: widget.filled ?? false,
           fillColor: widget.fillColor ?? Colors.transparent,
@@ -136,7 +137,8 @@ class _DropDownMenuWidgetState extends State<DropDownMenuWidget> {
                   horizontal: AppMeasures.largePadding24),
               child: Text(
                 item,
-                style: AppTextStyles.bodyMedium
+                style: Theme.of(context)
+                    .textTheme.bodyMedium!
                     .copyWith(color: AppColors.textSecondaryColor),
               ),
             ),

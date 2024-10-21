@@ -1,4 +1,5 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import '../app_constants/app_measures.dart';
 import '../theme/app_colors.dart';
 
@@ -58,11 +59,11 @@ class _CheckboxListTileWidgetState extends State<CheckboxListTileWidget> {
               Expanded(
                 child: Text(
                   widget.title,
-                  style: TextStyle(
-                    color: widget.value
-                        ? AppColors.primaryColor
-                        : AppColors.darkTextColor,
-                  ),
+                  style: Theme.of(context).textTheme.bodyMedium!.copyWith(
+                        color: widget.value
+                            ? AppColors.primaryColor
+                            : AppColors.darkTextColor,
+                      ),
                 ),
               ),
             ],
