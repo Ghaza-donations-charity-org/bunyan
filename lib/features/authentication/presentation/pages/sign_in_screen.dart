@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../../../../core/theme/app_text_styles_and_text_theme/app_text_styles.dart';
+
 class SignInScreen extends StatefulWidget {
   const SignInScreen({super.key});
 
@@ -12,10 +14,14 @@ class _SignInScreenState extends State<SignInScreen> {
   Widget build(BuildContext context) {
     return  Scaffold(
       appBar: AppBar(
-        title: const Text('Sign In'),
-      ),
-      body: const Center(
-        child: Text('Sign In'),
+        title:  Text('Sign In',
+        style: AppTextStyles.bodySmall,
+        ),
+    ),
+      body:  Center(
+        child: Text('Sign In',
+        style: TextStyle(color: Colors.black),
+        ),
       ),
     );
   }

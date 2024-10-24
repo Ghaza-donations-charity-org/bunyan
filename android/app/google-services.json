@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "33023341381",
+    "project_id": "gaza-donations-app",
+    "storage_bucket": "gaza-donations-app.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:33023341381:android:c332f535b7f7d4532ec42c",
+        "android_client_info": {
+          "package_name": "com.gazadonationsapp.app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDQOWgi2V7_V4HYEwHyx-YaFVjIjkluPEA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
