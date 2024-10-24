@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:ghaza_donations_app/core/theme/app_text_styles_and_text_theme/app_text_styles.dart';
 
 void main() {
   runApp(const MyApp());
@@ -31,7 +32,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
+      home: const MyHomePage(title: 'Flutter Demo Home Page',),
     );
   }
 }
@@ -105,8 +106,9 @@ class _MyHomePageState extends State<MyHomePage> {
           // wireframe for each widget.
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            const Text(
+             Text(
               'You have pushed the button this many times:',
+              style: AppTextStyles.bodyLarge,
             ),
             Text(
               '$_counter',
