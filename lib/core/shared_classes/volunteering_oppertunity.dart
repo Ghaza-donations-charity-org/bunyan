@@ -33,9 +33,9 @@ class VolunteeringOppertunity {
   set volunteeringOpportunityId(String volunteeringOpportunityId) =>
       _volunteeringOpportunityId = volunteeringOpportunityId;
 
-  // Method to check if the opportunity is active
-  bool isActive() {
-    return _state.toLowerCase() == 'active';
+  // Method to update the state of the opportunity
+  void updateState(String newState) {
+    state = newState;
   }
 
   // Method to provide a string representation of the opportunity
@@ -44,9 +44,3 @@ class VolunteeringOppertunity {
     return 'Opportunity(title: $_title, description: $_description, state: $_state, refugeeId: $_refugeeId, volunteeringOpportunityId: $_volunteeringOpportunityId)';
   }
 }
-
-
-//Commit msg
-// renamed to volunteering_oppertunity
-// added description, state, title, refugee_id, volunteering_oppurtiunity_id as attributes
-// added getters and setters for attributes
