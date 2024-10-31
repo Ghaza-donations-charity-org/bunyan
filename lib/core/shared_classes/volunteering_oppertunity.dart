@@ -1,7 +1,9 @@
+enum OpportunityState { not_started, pending, fulfilled }
+
 class VolunteeringOppertunity {
   String _title;
   String _description;
-  String _state;
+  OpportunityState _state = OpportunityState.not_started; //default state
   String _refugeeId;
   String _volunteeringOpportunityId;
 
@@ -9,7 +11,7 @@ class VolunteeringOppertunity {
   VolunteeringOppertunity({
     required String title,
     required String description,
-    required String state,
+    required OpportunityState state,
     required String refugeeId,
     required String volunteeringOpportunityId,
   })  : _title = title,
@@ -21,20 +23,20 @@ class VolunteeringOppertunity {
   // Getters
   String get title => _title;
   String get description => _description;
-  String get state => _state;
+  OpportunityState get state => _state;
   String get refugeeId => _refugeeId;
   String get volunteeringOpportunityId => _volunteeringOpportunityId;
 
   // Setters
   set title(String title) => _title = title;
   set description(String description) => _description = description;
-  set state(String state) => _state = state;
+  set state(OpportunityState state) => _state = state;
   set refugeeId(String refugeeId) => _refugeeId = refugeeId;
   set volunteeringOpportunityId(String volunteeringOpportunityId) =>
       _volunteeringOpportunityId = volunteeringOpportunityId;
 
   // Method to update the state of the opportunity
-  void updateState(String newState) {
+  void updateState(OpportunityState newState) {
     state = newState;
   }
 
