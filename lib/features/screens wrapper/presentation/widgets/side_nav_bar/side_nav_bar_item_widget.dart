@@ -3,15 +3,15 @@ import 'package:flutter/material.dart';
 import 'package:ghaza_donations_app/core/theme/app_colors.dart';
 import '../../../domain/repository/nav_bar_item.dart';
 
-class BottomNavigationbarItemWidget extends StatefulWidget {
+class SideNavigatorBarItemWidget extends StatefulWidget {
   final BottomNavigatorBarItem bottomNavigatorBarItem;
-  const BottomNavigationbarItemWidget({super.key, required this.bottomNavigatorBarItem});
+  const SideNavigatorBarItemWidget({super.key, required this.bottomNavigatorBarItem});
 
   @override
-  State<BottomNavigationbarItemWidget> createState() => _BottomNavigationbarItemWidgetState();
+  State<SideNavigatorBarItemWidget> createState() => _SideNavigatorBarItemWidgetState();
 }
 
-class _BottomNavigationbarItemWidgetState extends State<BottomNavigationbarItemWidget> {
+class _SideNavigatorBarItemWidgetState extends State<SideNavigatorBarItemWidget> {
   Color color = Colors.black;
   @override
   void initState() {
@@ -34,16 +34,19 @@ class _BottomNavigationbarItemWidgetState extends State<BottomNavigationbarItemW
             color = Colors.green;
           }
           else
-            {
-              color = AppColors.gold;
-            }
+          {
+            color = AppColors.gold;
+          }
         });
       },
       child: Container(
-        child: Column(
+        child: Row(
           children: [
             Icon(widget.bottomNavigatorBarItem.icon, color: color,),
-            Text(widget.bottomNavigatorBarItem.title, style: TextStyle(color : color),),
+            SizedBox(width: 10,),
+            MediaQuery.of(context).size.width> 800 ?
+            Text(widget.bottomNavigatorBarItem.title, style: TextStyle(color : color),)
+            : Container()
           ],
         ),
       ),

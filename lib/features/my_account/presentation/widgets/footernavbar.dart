@@ -1,47 +1,28 @@
-//TODO Replace with our own footer nav bar.
+import 'package:flutter/cupertino.dart';
 
-import 'package:flutter/material.dart';
-import 'package:ghaza_donations_app/core/theme/app_colors.dart';
+import '../../../screens wrapper/presentation/list_of_bottom_nav_bar_items.dart';
+import '../../../screens wrapper/presentation/widgets/bottom_nav_bar/nav_bar_item_widget.dart';
 
-class FooterNavBar extends StatelessWidget {
-  final int selectedIndex;
-  final ValueChanged<int> onItemTapped;
-
-  FooterNavBar({required this.selectedIndex, required this.onItemTapped});
+class FooterNavBar extends StatefulWidget {
+  const FooterNavBar({super.key});
 
   @override
+  State<FooterNavBar> createState() => _FooterNavBarState();
+}
+
+class _FooterNavBarState extends State<FooterNavBar> {
+  @override
   Widget build(BuildContext context) {
-    return BottomNavigationBar(
-      type: BottomNavigationBarType.fixed,
-      backgroundColor: AppColors.lilac,
-      selectedItemColor: Colors.blue,
-      unselectedItemColor: Colors.grey,
-      selectedFontSize: 14,
-      unselectedFontSize: 12,
-      currentIndex: selectedIndex,
-      onTap: onItemTapped,
-      items: [
-        BottomNavigationBarItem(
-          icon: Icon(Icons.home),
-          label: "Home",
-          // tooltip: 'Go to Home', // Optional tooltip for accessibility
-        ),
-        BottomNavigationBarItem(
-          icon: Icon(Icons.list),
-          label: "Events",
-          // tooltip: 'View Events', // Optional tooltip for accessibility
-        ),
-        BottomNavigationBarItem(
-          icon: Icon(Icons.person),
-          label: "Account",
-          // tooltip: 'Your Account', // Optional tooltip for accessibility
-        ),
-        BottomNavigationBarItem(
-          icon: Icon(Icons.shopping_cart),
-          label: "Contact Us",
-          // tooltip: 'Contact Us', // Optional tooltip for accessibility
-        ),
-      ],
+    return Container(
+      height: 85,
+      width: double.infinity,
+      padding: EdgeInsets.all(16.0),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        children: [
+          ...listOfBottomNavigatorBarItems.map((item) => BottomNavigationbarItemWidget(bottomNavigatorBarItem: item,))
+        ],
+      ),
     );
   }
 }
