@@ -5,7 +5,9 @@ import '../../../domain/repository/nav_bar_item.dart';
 
 class BottomNavigationbarItemWidget extends StatefulWidget {
   final BottomNavigatorBarItem bottomNavigatorBarItem;
-  const BottomNavigationbarItemWidget({super.key, required this.bottomNavigatorBarItem});
+  final Function (int index) onPress;
+  int selectedIndex;
+  BottomNavigationbarItemWidget({super.key, required this.bottomNavigatorBarItem, required this.selectedIndex, required this.onPress, });
 
   @override
   State<BottomNavigationbarItemWidget> createState() => _BottomNavigationbarItemWidgetState();
@@ -15,7 +17,7 @@ class _BottomNavigationbarItemWidgetState extends State<BottomNavigationbarItemW
   Color color = Colors.black;
   @override
   void initState() {
-    if (widget.bottomNavigatorBarItem.selected == true) {
+    if (widget.bottomNavigatorBarItem.index == widget.selectedIndex) {
       color = Colors.green;
     }
     else
@@ -30,14 +32,16 @@ class _BottomNavigationbarItemWidgetState extends State<BottomNavigationbarItemW
       onTap: (){
         setState(() {
           widget.bottomNavigatorBarItem.selected = !widget.bottomNavigatorBarItem.selected;
-          if (widget.bottomNavigatorBarItem.selected == true) {
+          if (widget.bottomNavigatorBarItem.index == widget.selectedIndex) {
             color = Colors.green;
           }
           else
             {
               color = AppColors.gold;
             }
-        });
+          widget.onPress(widget.bottomNavigatorBarItem.index);
+        }
+        );
       },
       child: Container(
         child: Column(

@@ -30,7 +30,11 @@ class _screenwrapperState extends State<screenwrapper> {
           listOfBottomNavigatorBarItems[selectedIndex].widget,
         ],
       ),
-      bottomNavigationBar: width < 600 ? FooterNavBar() : null,
+      bottomNavigationBar: width < 600 ? FooterNavBar(selectedIndex: selectedIndex, onSelectedIndexChange: (int index) {
+        setState(() {
+          selectedIndex = index;
+        });
+      },) : null,
 
     );
   }
