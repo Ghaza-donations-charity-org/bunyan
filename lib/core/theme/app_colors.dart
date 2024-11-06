@@ -27,9 +27,11 @@ class AppColors {
   static const Color green = Color(0xFF074F57);
   static const Color textGrey = Color(0xFF909090);
   static const Color black = Colors.black;
-
+  static const Color backgroundNavyBlue = Color(0xFF060622);
+  static const Color backgroundLighterNavyBlue = Color(0xFF111835);
   static const Color selectionGreen = Color(0xFFdde5e9);
-
+  static const Color gold = Color(0xFFe1a802);
+  static const Color lilac = Color(0xFFa5c1e9);
   //-------------------------------------------------//
   //main colors
   static const Color primaryColor = midnightBlue;
