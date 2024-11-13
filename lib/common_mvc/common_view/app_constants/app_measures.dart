@@ -1,4 +1,5 @@
-import '../utility_functions_and_classes/screen_utility_functions.dart';
+
+import '../../common_controller/common_utility_classes/screen_utility_functions.dart';
 
 class AppMeasures {
   static const double smallPadding6 = 6;

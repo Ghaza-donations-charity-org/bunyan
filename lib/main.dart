@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:ghaza_donations_app/core/theme/app_text_styles_and_text_theme/app_text_styles.dart';
 
 void main() {
   runApp(const MyApp());
@@ -108,7 +107,7 @@ class _MyHomePageState extends State<MyHomePage> {
           children: <Widget>[
              Text(
               'You have pushed the button this many times:',
-              style: AppTextStyles.bodyLarge,
+
             ),
             Text(
               '$_counter',

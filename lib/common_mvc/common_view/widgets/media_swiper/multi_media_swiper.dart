@@ -1,9 +1,10 @@
 
 import 'package:flutter/material.dart';
-import '../../../../core/app_constants/app_measures.dart';
-import '../../../../core/theme/app_colors.dart';
-import '../../utility_functions_and_classes/image_utils.dart';
-import '../../utility_functions_and_classes/screen_utility_functions.dart';
+
+import '../../../common_controller/common_utility_classes/image_utils.dart';
+import '../../../common_controller/common_utility_classes/screen_utility_functions.dart';
+import '../../app_constants/app_measures.dart';
+import '../../theme/app_colors.dart';
 
 class MediaSwiper extends StatefulWidget {
   final List<String> listOfMediaUrls;

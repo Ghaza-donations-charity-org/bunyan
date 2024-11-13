@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:video_player/video_player.dart';
-import '../utility_functions_and_classes/image_utils.dart'; // For caching images
+
+import '../../common_controller/common_utility_classes/image_utils.dart';
 
 class MediaDisplayWidget extends StatefulWidget {
   final String mediaUrl;
