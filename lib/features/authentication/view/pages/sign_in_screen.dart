@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-
-import '../../../../core/theme/app_text_styles_and_text_theme/app_text_styles.dart';
+import '../../../../common_mvc/common_view/theme/app_text_styles_and_text_theme/app_text_styles.dart';
 
 class SignInScreen extends StatefulWidget {
   const SignInScreen({super.key});
@@ -18,7 +17,7 @@ class _SignInScreenState extends State<SignInScreen> {
         style: AppTextStyles.bodySmall,
         ),
     ),
-      body:  Center(
+      body:  const Center(
         child: Text('Sign In',
         style: TextStyle(color: Colors.black),
         ),

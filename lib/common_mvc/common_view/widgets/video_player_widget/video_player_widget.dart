@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:video_player/video_player.dart';
-
+import '../../../common_controller/common_utility_classes/screen_utility_functions.dart';
 import '../../app_constants/app_measures.dart';
 import '../../theme/app_colors.dart';
-import '../../utility_functions_and_classes/screen_utility_functions.dart';
 
 class VideoPlayerWidget extends StatefulWidget {
   final String videoUrl;
