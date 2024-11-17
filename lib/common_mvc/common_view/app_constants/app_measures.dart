@@ -1,6 +1,4 @@
 
-import '../../common_controller/common_utility_classes/screen_utility_functions.dart';
-
 class AppMeasures {
   static const double smallPadding6 = 6;
   static const double smallPadding8 = 8;
@@ -27,7 +25,4 @@ class AppMeasures {
   static const double smallIconSize = 20;
   static const double mediumIconSize = 30;
   static const double largeIconSize = 40;
-
-  static const double boardWidgetHeight = 210;
-  static double boardWidgetWidth = ScreenUtilityFunctions().screenWidth / 3;
 }

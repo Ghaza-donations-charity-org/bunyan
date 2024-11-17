@@ -10,7 +10,7 @@ class SideNavigationRail extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    double screenWidth = ScreenUtilityFunctions().screenWidth;
+    double screenWidth = ScreenUtilityFunctions().getScreenWidth(context);
     return Consumer<NavigationController>(
       builder: (context, navigationController, child) {
         return NavigationRail(
@@ -18,7 +18,7 @@ class SideNavigationRail extends StatelessWidget {
             alignment: Alignment.topLeft,
             child: Padding(padding: EdgeInsets.all(10),child: AppLogo(),),
           ),
-          extended: screenWidth > 1000,
+          extended: ScreenUtilityFunctions().isVeryWideScreen(context) ,
           destinations: [
             ...listOfNavigationBarItems.map((item) => NavigationRailDestination(
               padding: const EdgeInsets.symmetric(vertical: 10),

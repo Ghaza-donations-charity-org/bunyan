@@ -33,7 +33,7 @@ class ButtonWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return SizedBox(
       height: height ?? 50,
-      width: width ?? ScreenUtilityFunctions().screenWidth,
+      width: width ?? ScreenUtilityFunctions().getScreenWidth(context),
       child: ElevatedButton(
         onPressed: () {
           onPressed();

@@ -59,7 +59,7 @@ class _MediaSwiperState extends State<MediaSwiper> {
                 ),
                 Container(
                   height: 265,
-                  width: ScreenUtilityFunctions().screenWidth,
+                  width: ScreenUtilityFunctions().getScreenWidth(context),
                   decoration: const BoxDecoration(
                       borderRadius: BorderRadius.only(
                         topLeft:
@@ -125,7 +125,7 @@ class _PageIndicatorWidgetState extends State<PageIndicatorWidget> {
         children: [
           SizedBox(
             height: 245,
-            width: ScreenUtilityFunctions().screenWidth,
+            width: ScreenUtilityFunctions().getScreenWidth(context),
             child: ClipRRect(
               borderRadius: const BorderRadius.all(
                 Radius.circular(AppMeasures.mediumBorderRadius12),
