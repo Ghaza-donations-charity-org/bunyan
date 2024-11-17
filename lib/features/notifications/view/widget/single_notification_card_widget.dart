@@ -1,0 +1,1 @@
+//Single notification card widget
