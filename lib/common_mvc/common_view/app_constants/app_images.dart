@@ -4,7 +4,7 @@ static const String baseImageUrl = "assets/images";
 //==========================================================================================//
 //AdBlip assets
 static const String logo = "$baseImageUrl/logo.png";
-static const String whiteLogo = "$baseImageUrl/white_logo.svg";
+static const String logoWithWhiteBackground = "$baseImageUrl/logo_white_background.jpg";
 static const String whiteLogoPng = "$baseImageUrl/white_logo.png";
 static const String appBarBackgroundImageSVG =
     "$baseImageUrl/appbar_header.svg";
