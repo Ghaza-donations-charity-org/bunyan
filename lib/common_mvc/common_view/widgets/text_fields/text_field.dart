@@ -112,10 +112,10 @@ class _TextFieldWidgetState extends State<TextFieldWidget> {
         style: widget.inputTextStyle ??
             TextStyle(
               fontFamily: 'Cairo',
-              color: widget.textColor ?? AppColors.textSecondaryColor,
+              color: widget.textColor ?? AppColors.white,
               fontSize: 16,
             ),
-        cursorColor: widget.cursorColor ?? AppColors.primaryColor,
+        cursorColor: widget.cursorColor ?? AppColors.white,
         cursorHeight: widget.cursorHeight ?? 18,
         cursorWidth: 1,
         keyboardType: widget.keyboardType ?? TextInputType.text,
@@ -128,17 +128,17 @@ class _TextFieldWidgetState extends State<TextFieldWidget> {
           hintStyle: widget.hintTextStyle ??
               Theme.of(context)
                   .textTheme.bodyMedium!
-                  .copyWith(color: AppColors.textSecondaryColor),
+                  .copyWith(color: AppColors.white),
           labelStyle: widget.labelTextStyle ??
               Theme.of(context)
                   .textTheme.bodyMedium!.copyWith(
-                color: widget.textColor ?? AppColors.textSecondaryColor,
+                color: widget.textColor ?? AppColors.white,
               ),
-          filled: widget.filled ?? false,
-          fillColor: widget.fillColor ?? Colors.transparent,
+          filled: widget.filled ?? true,
+          fillColor: widget.fillColor ?? AppColors.navyBlue,
           border: OutlineInputBorder(
             borderSide: BorderSide(
-                color: widget.borderColor ?? AppColors.lightGrey2, width: 0),
+                color: widget.borderColor ?? AppColors.lightGrey, width: 0),
             borderRadius: BorderRadius.all(
               Radius.circular(widget.borderRadius ?? 12),
             ),
@@ -146,15 +146,15 @@ class _TextFieldWidgetState extends State<TextFieldWidget> {
           focusedBorder: widget.focusBorder ??
               OutlineInputBorder(
                 borderSide: BorderSide(
-                    color: widget.focusColor ?? AppColors.primaryColor,
-                    width: 0),
+                    color: widget.focusColor ?? AppColors.white,
+                    width: 1),
                 borderRadius: BorderRadius.all(
                   Radius.circular(widget.borderRadius ?? 12),
                 ),
               ),
           enabledBorder: OutlineInputBorder(
             borderSide: BorderSide(
-                color: widget.borderColor ?? AppColors.lightGrey2, width: 1),
+                color: widget.borderColor ?? AppColors.primaryColor, width: 0),
             borderRadius: BorderRadius.all(
               Radius.circular(widget.borderRadius ?? 12),
             ),
@@ -193,11 +193,11 @@ class _TextFieldWidgetState extends State<TextFieldWidget> {
                           ? (widget.suffixWhenTextIsHidden ??
                               const Icon(
                                 IconsaxPlusBold.eye_slash,
-                                color: AppColors.grey,
+                                color: AppColors.lightGrey2,
                               ))
                           : widget.suffixWhenTextIsVisible ??
                               const Icon(IconsaxPlusBold.eye,
-                                  color: AppColors.grey),
+                                  color: AppColors.lightGrey2),
                     ),
         ),
         onChanged: (value) {
