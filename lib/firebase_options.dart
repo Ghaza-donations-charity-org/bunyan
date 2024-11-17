@@ -46,7 +46,7 @@ class DefaultFirebaseOptions {
     messagingSenderId: '33023341381',
     projectId: 'gaza-donations-app',
     authDomain: 'gaza-donations-app.firebaseapp.com',
-    storageBucket: 'gaza-donations-app.appspot.com',
+    storageBucket: 'gaza-donations-app.firebasestorage.app',
     measurementId: 'G-Q8793CNK4F',
   );
 
@@ -55,7 +55,7 @@ class DefaultFirebaseOptions {
     appId: '1:33023341381:android:c332f535b7f7d4532ec42c',
     messagingSenderId: '33023341381',
     projectId: 'gaza-donations-app',
-    storageBucket: 'gaza-donations-app.appspot.com',
+    storageBucket: 'gaza-donations-app.firebasestorage.app',
   );
 
   static const FirebaseOptions ios = FirebaseOptions(
@@ -63,7 +63,8 @@ class DefaultFirebaseOptions {
     appId: '1:33023341381:ios:51e5923fb6ceff282ec42c',
     messagingSenderId: '33023341381',
     projectId: 'gaza-donations-app',
-    storageBucket: 'gaza-donations-app.appspot.com',
+    storageBucket: 'gaza-donations-app.firebasestorage.app',
+    iosClientId: '33023341381-vtdr3stfnc9cb83u76ek6dlfd3ucec0e.apps.googleusercontent.com',
     iosBundleId: 'com.example.ghazaDonationsApp',
   );
 
@@ -72,7 +73,8 @@ class DefaultFirebaseOptions {
     appId: '1:33023341381:ios:51e5923fb6ceff282ec42c',
     messagingSenderId: '33023341381',
     projectId: 'gaza-donations-app',
-    storageBucket: 'gaza-donations-app.appspot.com',
+    storageBucket: 'gaza-donations-app.firebasestorage.app',
+    iosClientId: '33023341381-vtdr3stfnc9cb83u76ek6dlfd3ucec0e.apps.googleusercontent.com',
     iosBundleId: 'com.example.ghazaDonationsApp',
   );
 
@@ -82,7 +84,8 @@ class DefaultFirebaseOptions {
     messagingSenderId: '33023341381',
     projectId: 'gaza-donations-app',
     authDomain: 'gaza-donations-app.firebaseapp.com',
-    storageBucket: 'gaza-donations-app.appspot.com',
+    storageBucket: 'gaza-donations-app.firebasestorage.app',
     measurementId: 'G-MZPVRL34T2',
   );
+
 }

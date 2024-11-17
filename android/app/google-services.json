@@ -2,7 +2,7 @@
   "project_info": {
     "project_number": "33023341381",
     "project_id": "gaza-donations-app",
-    "storage_bucket": "gaza-donations-app.appspot.com"
+    "storage_bucket": "gaza-donations-app.firebasestorage.app"
   },
   "client": [
     {
@@ -12,7 +12,12 @@
           "package_name": "com.gazadonationsapp.app"
         }
       },
-      "oauth_client": [],
+      "oauth_client": [
+        {
+          "client_id": "33023341381-o0fn3qr4dfgrr5jdh444hbjut6pnmmd5.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
       "api_key": [
         {
           "current_key": "AIzaSyDQOWgi2V7_V4HYEwHyx-YaFVjIjkluPEA"
@@ -20,7 +25,19 @@
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": []
+          "other_platform_oauth_client": [
+            {
+              "client_id": "33023341381-o0fn3qr4dfgrr5jdh444hbjut6pnmmd5.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "33023341381-vtdr3stfnc9cb83u76ek6dlfd3ucec0e.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.ghazaDonationsApp"
+              }
+            }
+          ]
         }
       }
     }

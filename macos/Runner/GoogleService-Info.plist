@@ -2,6 +2,10 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>CLIENT_ID</key>
+	<string>33023341381-vtdr3stfnc9cb83u76ek6dlfd3ucec0e.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.33023341381-vtdr3stfnc9cb83u76ek6dlfd3ucec0e</string>
 	<key>API_KEY</key>
 	<string>AIzaSyCnNgHGUPj7QFbyNFeY7x0z_qgg5f2JRmA</string>
 	<key>GCM_SENDER_ID</key>
@@ -13,7 +17,7 @@
 	<key>PROJECT_ID</key>
 	<string>gaza-donations-app</string>
 	<key>STORAGE_BUCKET</key>
-	<string>gaza-donations-app.appspot.com</string>
+	<string>gaza-donations-app.firebasestorage.app</string>
 	<key>IS_ADS_ENABLED</key>
 	<false></false>
 	<key>IS_ANALYTICS_ENABLED</key>
