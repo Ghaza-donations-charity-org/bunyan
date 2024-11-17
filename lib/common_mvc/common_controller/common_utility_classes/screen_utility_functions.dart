@@ -1,11 +1,12 @@
-import 'package:flutter/cupertino.dart';
+import 'package:flutter/widgets.dart';
 
 class ScreenUtilityFunctions {
-  static final ScreenUtilityFunctions _instance =
-      ScreenUtilityFunctions._internal();
+  // Singleton factory
+  static final ScreenUtilityFunctions _uniqueSingletonInstance =
+  ScreenUtilityFunctions._internal();
 
   factory ScreenUtilityFunctions() {
-    return _instance;
+    return _uniqueSingletonInstance;
   }
 
   ScreenUtilityFunctions._internal();
@@ -17,8 +18,6 @@ class ScreenUtilityFunctions {
   double getScreenHeightWithoutStatusBar = 0.0;
   double getScreenHeightWithoutStatusBarAndBottomNavBar = 0.0;
 
-  bool isUsingIPad = false;
-
   void init(BuildContext context) {
     final mediaQuery = MediaQuery.of(context);
     screenWidth = mediaQuery.size.width;
@@ -29,6 +28,17 @@ class ScreenUtilityFunctions {
     getScreenHeightWithoutStatusBarAndBottomNavBar = screenHeight -
         statusBarHeight -
         bottomNavigationBarHeight;
-    isUsingIPad = (screenWidth >= 800);
+  }
+
+  /// Check if the screen is very wide (e.g., for web or desktop layouts)
+  bool isVeryWideScreen(BuildContext context) {
+    final mediaQuery = MediaQuery.of(context);
+    return mediaQuery.size.width > 1200;
+  }
+
+  /// Check if the screen is wide (e.g., for tablets or small desktop layouts)
+  bool isWideScreen(BuildContext context) {
+    final mediaQuery = MediaQuery.of(context);
+    return mediaQuery.size.width > 900;
   }
 }
