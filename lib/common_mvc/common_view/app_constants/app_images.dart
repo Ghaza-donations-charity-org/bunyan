@@ -20,8 +20,8 @@ static const String noImage = "$baseImageUrl/no_image.png";
 
 //==========================================================================================//
 //Sign in providers
-  static const String appleLogo = "$baseImageUrl/logos/apple.svg";
-  static const String googleLogo = "$baseImageUrl/logos/google.svg";
+  static const String appleLogo = "$baseImageUrl/apple_logo.png";
+  static const String googleLogo = "$baseImageUrl/google_logo.png";
 
 //==========================================================================================//
 

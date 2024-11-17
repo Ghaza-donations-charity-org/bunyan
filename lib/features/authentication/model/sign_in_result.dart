@@ -1,6 +1,6 @@
-class SignInResult {
+class FirebaseAuthResult {
   final bool success;
   final String? errorMessage;
 
-  SignInResult(this.success, [this.errorMessage]);
+  FirebaseAuthResult(this.success, [this.errorMessage]);
 }

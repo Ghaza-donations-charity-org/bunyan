@@ -8,14 +8,14 @@ class SignInContext {
     _strategy = strategy;
   }
 
-  Future<SignInResult> signIn() async {
+  Future<FirebaseAuthResult> signIn() async {
     if (_strategy == null) throw Exception("SignInStrategy not set!");
     try {
       var signInResult = await _strategy!.signIn();
       //ToDo: Implement the logic to save the user data in the local storage
-      return SignInResult(true);
+      return FirebaseAuthResult(true);
     } catch (e) {
-      return SignInResult(false, e.toString());
+      return FirebaseAuthResult(false, e.toString());
     }
 
   }

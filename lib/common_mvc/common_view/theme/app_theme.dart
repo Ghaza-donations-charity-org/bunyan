@@ -6,11 +6,17 @@ import 'app_text_styles_and_text_theme/app_text_theme.dart';
 class AppTheme {
   static ThemeData darkTheme = ThemeData(
     fontFamily: 'Cairo',
-    colorScheme: ColorScheme.fromSeed(seedColor: AppColors.primaryColor),
     useMaterial3: true,
+    colorScheme: ColorScheme.fromSeed(seedColor: AppColors.primaryColor),
     scaffoldBackgroundColor: AppColors.scaffoldBackgroundColor,
     primaryColor: AppColors.primaryColor,
 
+
+textButtonTheme: TextButtonThemeData(
+      style: ButtonStyle(
+        foregroundColor: WidgetStateProperty.all(AppColors.white),
+      ),
+    ),
 
     textTheme: AppTextTheme.appTextTheme,
 

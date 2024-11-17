@@ -201,6 +201,7 @@ class _TextFieldWidgetState extends State<TextFieldWidget> {
                     ),
         ),
         onChanged: (value) {
+
           if (widget.onChanged != null) {
             widget.onChanged!(value);
           }

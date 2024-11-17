@@ -11,7 +11,9 @@ class ScreensWrapper extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
 
-    return ScreenUtilityFunctions().isWideScreen(context) ? WebAppView() : MobileAppView();
+    return
+
+      ScreenUtilityFunctions().isWideScreen(context) ? WebAppView() : MobileAppView();
 
   }
 }

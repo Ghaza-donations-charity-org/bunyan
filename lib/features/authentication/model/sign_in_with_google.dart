@@ -8,13 +8,13 @@ class GoogleSignInStrategy implements SignInStrategy {
   final GoogleSignIn _googleSignIn = GoogleSignIn();
 
   @override
-  Future<SignInResult> signIn() async {
+  Future<FirebaseAuthResult> signIn() async {
     try{
       final GoogleSignInAccount? account = await _googleSignIn.signIn();
       //ToDo: Implement the logic to save the user data in the local storage
-      return SignInResult(true);
+      return FirebaseAuthResult(true);
     }catch(e){
-      return SignInResult(false, e.toString());
+      return FirebaseAuthResult(false, e.toString());
     }
   }
 }

@@ -16,13 +16,14 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return ChangeNotifierProvider(
+        create: (context) => NavigationController(),
+    child:
+    MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Bunyan',
       theme: AppTheme.darkTheme,
-      home: ChangeNotifierProvider(
-        create: (context) => NavigationController(),
-        child: AuthWrapper(),
+      home:  AuthWrapper(),
       ),
     );
   }

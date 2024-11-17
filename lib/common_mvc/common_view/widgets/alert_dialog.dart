@@ -20,7 +20,7 @@ class AlertDialogWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AlertDialog(
-      backgroundColor: AppColors.backgroundWhite,
+      backgroundColor: AppColors.cardColor,
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
       title: Text(
         title ?? '',
@@ -42,15 +42,14 @@ class AlertDialogWidget extends StatelessWidget {
               padding: const EdgeInsets.all(AppMeasures.mediumPadding12),
               child: ElevatedButton(
                 style: ElevatedButton.styleFrom(
-                    backgroundColor: AppColors.primaryColor,
+                    backgroundColor: AppColors.accentColor,
                     shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(AppMeasures.mediumBorderRadius12))),
                 onPressed: onPressed ?? () => Navigator.of(context).pop(),
                 child: Text("OK",
                     style: Theme.of(context)
                         .textTheme
-                        .bodyMedium!
-                        .copyWith(color: Colors.white)),
+                        .bodyMedium!.copyWith(color: AppColors.scaffoldBackgroundColor)),
               ),
             ),
       ],

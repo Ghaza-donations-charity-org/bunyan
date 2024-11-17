@@ -3,7 +3,6 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:ghaza_donations_app/features/main_screens_wrapper/view/page/screens_wrapper.dart';
 
 import '../../../../common_mvc/common_view/theme/app_colors.dart';
-import '../../../home_screen/view/page/home_screen.dart';
 import '../pages/sign_in_screen.dart';
 
 class AuthWrapper extends StatelessWidget {
