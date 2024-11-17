@@ -1,5 +1,7 @@
 import 'package:firebase_core/firebase_core.dart';
 
+import '../../../firebase_options.dart';
+
 class FirebaseService {
   // Singleton instance
   //The private constructor _internal is called only once when the instance is created and stored in the static final variable
@@ -18,6 +20,7 @@ class FirebaseService {
   FirebaseService._internal();
 
   Future<void> initializeFirebase() async {
-    await Firebase.initializeApp();
+    await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform,
+    );
   }
 }

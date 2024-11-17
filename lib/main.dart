@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-
-import 'common_mvc/common_controller/common_utility_classes/screen_utility_functions.dart';
+import 'common_mvc/common_model/firebase_models/firebase_services_singleton.dart';
 import 'common_mvc/common_view/theme/app_theme.dart';
-import 'features/main_screens_wrapper/view/page/screens_wrapper.dart';
+import 'features/authentication/view/widget/auth_wrapper.dart';
 import 'features/navigation_bar/controller/navigation_controller.dart';
 
 void main() {
+  WidgetsFlutterBinding.ensureInitialized();
+  FirebaseService().initializeFirebase();
   runApp(const MyApp());
 }
 
@@ -15,10 +16,6 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // // Initialize screen utilities
-    // WidgetsBinding.instance.addPostFrameCallback((_) {
-    //   ScreenUtilityFunctions().init(context);
-    // });
 
     return MaterialApp(
       title: 'Flutter Demo',
@@ -26,7 +23,7 @@ class MyApp extends StatelessWidget {
 
       home:  ChangeNotifierProvider(
     create: (context) => NavigationController(),
-    child:const ScreensWrapper(),),
+    child: AuthWrapper(),),
     );
   }
 }
