@@ -8,7 +8,7 @@ and makes it easier for charity org admins to manage it all via a combact dashbo
 
 
 
-##Used Design Patterns:
+## Used Design Patterns:
 
 1- Strategy
 
