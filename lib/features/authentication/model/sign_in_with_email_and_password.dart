@@ -3,7 +3,7 @@ import 'dart:nativewrappers/_internal/vm/lib/ffi_allocation_patch.dart';
 
 import 'package:firebase_auth/firebase_auth.dart';
 
-import '../../model/repository/sign_in_interface.dart';
+import 'sign_in_interface.dart';
 
 class SignInWithEmailAndPassword implements SignInInterface {
   final String email;
