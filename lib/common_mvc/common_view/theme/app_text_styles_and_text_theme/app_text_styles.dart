@@ -13,7 +13,7 @@ class AppTextSizes {
 
 class AppTextStyles {
   static const String fontFamily = 'Cairo';
-  static const Color textColor = AppColors.textPrimaryColor;
+  static const Color textColor = AppColors.white;
 
   // Base style to reuse common properties
   static const TextStyle baseStyle = TextStyle(

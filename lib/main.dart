@@ -5,9 +5,9 @@ import 'common_mvc/common_view/theme/app_theme.dart';
 import 'features/authentication/view/widget/auth_wrapper.dart';
 import 'features/navigation_bar/controller/navigation_controller.dart';
 
-void main() {
+void main()  {
   WidgetsFlutterBinding.ensureInitialized();
-  FirebaseService().initializeFirebase();
+   FirebaseService().initializeFirebase();
   runApp(const MyApp());
 }
 
@@ -16,14 +16,13 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: 'Bunyan',
       theme: AppTheme.darkTheme,
-
-      home:  ChangeNotifierProvider(
-    create: (context) => NavigationController(),
-    child: AuthWrapper(),),
+      home: ChangeNotifierProvider(
+        create: (context) => NavigationController(),
+        child: AuthWrapper(),
+      ),
     );
   }
 }
