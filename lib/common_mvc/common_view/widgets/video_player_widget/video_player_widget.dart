@@ -45,7 +45,7 @@ class _VideoPlayerWidgetState extends State<VideoPlayerWidget> {
   Widget build(BuildContext context) {
     return Container(
       height: widget.height ?? 185,
-      width: widget.width ?? ScreenUtilityFunctions().screenWidth,
+      width: widget.width ?? ScreenUtilityFunctions().getScreenWidth(context),
       decoration: const BoxDecoration(
         color: AppColors.lightGreyGedan,
         borderRadius: BorderRadius.only(
