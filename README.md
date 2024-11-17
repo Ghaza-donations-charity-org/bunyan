@@ -6,6 +6,8 @@ It also helps people in need by allowing them to create a donation/help requests
 and makes it easier for charity org admins to manage it all via a combact dashboard.
 
 
+
+
 Used Design Patterns:
 
 1- Strategy
