@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import 'common_mvc/common_controller/common_utility_classes/screen_utility_functions.dart';
+import 'common_mvc/common_view/theme/app_theme.dart';
 import 'features/main_screens_wrapper/view/page/screens_wrapper.dart';
 import 'features/navigation_bar/controller/navigation_controller.dart';
 
@@ -21,10 +22,8 @@ class MyApp extends StatelessWidget {
 
     return MaterialApp(
       title: 'Flutter Demo',
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        useMaterial3: true,
-      ),
+      theme: AppTheme.darkTheme,
+
       home:  ChangeNotifierProvider(
     create: (context) => NavigationController(),
     child:const ScreensWrapper(),),

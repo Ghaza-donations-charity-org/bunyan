@@ -67,7 +67,7 @@ class _MediaSwiperState extends State<MediaSwiper> {
                         topRight:
                             Radius.circular(AppMeasures.mediumBorderRadius12),
                       ),
-                      color: AppColors.lightGreyGedan),
+                      color: AppColors.lightGrey),
                   child: ClipRRect(
                     borderRadius: const BorderRadius.only(
                       topLeft: Radius.circular(AppMeasures.mediumBorderRadius12),
