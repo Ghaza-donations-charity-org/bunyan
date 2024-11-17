@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:ghaza_donations_app/features/screens_wrapper/view/page/screens_wrapper.dart';
 import 'package:provider/provider.dart';
 
+import 'common_mvc/common_controller/common_utility_classes/screen_utility_functions.dart';
 import 'features/navigation_bar/controller/navigation_controller.dart';
 
 void main() {
@@ -13,6 +14,11 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // Initialize screen utilities
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      ScreenUtilityFunctions().init(context);
+    });
+
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(

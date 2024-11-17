@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:ghaza_donations_app/common_mvc/common_controller/common_utility_classes/screen_utility_functions.dart';
 import 'package:ghaza_donations_app/common_mvc/common_view/widgets/logo.dart';
 import 'package:ghaza_donations_app/features/navigation_bar/controller/navigation_controller.dart';
 import 'package:ghaza_donations_app/features/navigation_bar/model/list_of_navigation_bar_items.dart';
@@ -9,7 +10,7 @@ class SideNavigationRail extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    double screenWidth = MediaQuery.of(context).size.width;
+    double screenWidth = ScreenUtilityFunctions().screenWidth;
     return Consumer<NavigationController>(
       builder: (context, navigationController, child) {
         return NavigationRail(
