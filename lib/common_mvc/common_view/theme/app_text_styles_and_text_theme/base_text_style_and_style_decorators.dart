@@ -19,7 +19,7 @@ abstract class TextStyleDecorator {
 class BoldTextStyleDecorator implements TextStyleDecorator {
   @override
   TextStyle apply(TextStyle style) {
-    return style.copyWith(fontWeight: FontWeight.bold);
+    return style.copyWith(fontWeight: FontWeight.w600);
   }
 }
 

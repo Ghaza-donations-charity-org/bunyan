@@ -31,7 +31,7 @@ class BackButtonWidget extends StatelessWidget {
         height: 42,
         decoration: BoxDecoration(
           color: hasBackgroundColor == true
-              ? (backgroundColor ?? AppColors.lightGreyGedan)
+              ? (backgroundColor ?? AppColors.lightGrey)
               : Colors.transparent,
           borderRadius: BorderRadius.circular(10),
         ),

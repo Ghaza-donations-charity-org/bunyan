@@ -103,7 +103,7 @@ class _SearchBarWidgetState extends State<SearchBarWidget> {
             ? const SizedBox.shrink()
             : BackButtonWidget(
                 backgroundColor: widget.backButtonBackgroundColor ??
-                    AppColors.lightGreyGedan,
+                    AppColors.lightGrey,
                 onPressed: () {
                   if (widget.onBackButtonPressed != null) {
                     widget.onBackButtonPressed!();

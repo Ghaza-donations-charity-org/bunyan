@@ -18,7 +18,7 @@ class AppTextTheme {
     bodyLarge: NormalTextStyleDecorator()
         .apply(AppTextStyles.bodyLarge)
         .copyWith(color: AppColors.textSecondaryColor),
-    bodyMedium: BoldTextStyleDecorator()
+    bodyMedium: NormalTextStyleDecorator()
         .apply(AppTextStyles.bodyMedium)
         .copyWith(color: AppColors.textSecondaryColor),
     bodySmall: NormalTextStyleDecorator()

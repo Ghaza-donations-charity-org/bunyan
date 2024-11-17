@@ -33,7 +33,7 @@ class _CheckboxListTileWidgetState extends State<CheckboxListTileWidget> {
             vertical: AppMeasures.smallPadding6 * 0.5),
         child: Container(
           decoration: BoxDecoration(
-            color: widget.value ? AppColors.lightGreyGedan : null,
+            color: widget.value ? AppColors.lightGrey : null,
             borderRadius: const BorderRadius.all(
                 Radius.circular(AppMeasures.mediumBorderRadius12)),
           ),
