@@ -11,6 +11,12 @@ class BottomNavigationBarWidget extends StatelessWidget {
     return Consumer<NavigationController>(
       builder: (context, navigationController, child) {
         return BottomNavigationBar(
+          backgroundColor: Colors.grey.shade700,
+          selectedItemColor: Colors.blue.shade700,
+          unselectedItemColor: Colors.black,
+          showSelectedLabels: true,
+          showUnselectedLabels: true,
+
           items: [
             ...listOfNavigationBarItems.map((item) =>
                 BottomNavigationBarItem(
