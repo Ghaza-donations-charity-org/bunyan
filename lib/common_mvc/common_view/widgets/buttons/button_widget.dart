@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../../../common_controller/common_utility_classes/screen_utility_functions.dart';
 import '../../theme/app_colors.dart';
 
 class ButtonWidget extends StatelessWidget {
@@ -32,7 +33,7 @@ class ButtonWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return SizedBox(
       height: height ?? 50,
-      width: width ?? MediaQuery.of(context).size.width ,
+      width: width ?? ScreenUtilityFunctions().screenWidth,
       child: ElevatedButton(
         onPressed: () {
           onPressed();
