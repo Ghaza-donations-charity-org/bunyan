@@ -1,28 +1,21 @@
-//strategy for sign in with email and password
-
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:ghaza_donations_app/features/authentication/model/sign_in_result.dart';
 
 import 'firebase_auth_singleton.dart';
-import 'sign_in_strategy_interface.dart';
 
-class SignInWithEmailAndPassword implements SignInStrategy {
-  final String email;
-  final String password;
-  SignInWithEmailAndPassword({
-    required this.email,
-    required this.password,
-  });
+class SignUp{
+
+
 
   //using the singleton instance of FirebaseAuth
   final FirebaseAuthServices _firebaseAuthServices = FirebaseAuthServices();
 
 
-  @override
-  Future<FirebaseAuthResult> signIn() async {
+  Future<FirebaseAuthResult> signUp({required String email, required
+  String password}) async {
     try {
-      _firebaseAuthServices.authInstance.signInWithEmailAndPassword(email: email, password: password);
-          await  _firebaseAuthServices.authInstance.signInWithEmailAndPassword(
+      _firebaseAuthServices.authInstance.createUserWithEmailAndPassword(email: email, password: password);
+      await  _firebaseAuthServices.authInstance.signInWithEmailAndPassword(
         email: email,
         password: password,
       );

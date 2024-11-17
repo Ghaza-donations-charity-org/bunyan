@@ -9,7 +9,7 @@ import 'package:sign_in_with_apple/sign_in_with_apple.dart';
 class AppleSignInStrategy implements SignInStrategy {
 
   @override
-  Future<SignInResult> signIn() async {
+  Future<FirebaseAuthResult> signIn() async {
 
       try {
         final credential = await SignInWithApple.getAppleIDCredential(
@@ -26,9 +26,9 @@ class AppleSignInStrategy implements SignInStrategy {
 
       //ToDo: Implement the logic to save the user data in the local storage
 
-      return SignInResult(true);
+      return FirebaseAuthResult(true);
     }catch(e){
-      return SignInResult(false, e.toString());
+      return FirebaseAuthResult(false, e.toString());
     }
   }
 }

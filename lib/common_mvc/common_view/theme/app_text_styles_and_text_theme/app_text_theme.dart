@@ -6,26 +6,20 @@ import 'base_text_style_and_style_decorators.dart';
 // Client code that uses decorators
 class AppTextTheme {
   static final appTextTheme = TextTheme(
+
     titleLarge: BoldTextStyleDecorator()
-        .apply(AppTextStyles.titleLarge)
-        .copyWith(color: AppColors.textSecondaryColor),
+        .apply(AppTextStyles.titleLarge),
     titleMedium: NormalTextStyleDecorator()
-        .apply(AppTextStyles.titleMedium)
-        .copyWith(color: AppColors.textSecondaryColor),
+        .apply(AppTextStyles.titleMedium),
     titleSmall: BoldTextStyleDecorator()
-        .apply(AppTextStyles.titleSmall)
-        .copyWith(color: AppColors.textSecondaryColor),
+        .apply(AppTextStyles.titleSmall),
     bodyLarge: NormalTextStyleDecorator()
-        .apply(AppTextStyles.bodyLarge)
-        .copyWith(color: AppColors.textSecondaryColor),
+        .apply(AppTextStyles.bodyLarge),
     bodyMedium: NormalTextStyleDecorator()
-        .apply(AppTextStyles.bodyMedium)
-        .copyWith(color: AppColors.textSecondaryColor),
+        .apply(AppTextStyles.bodyMedium),
     bodySmall: NormalTextStyleDecorator()
-        .apply(AppTextStyles.bodySmall)
-        .copyWith(color: AppColors.textSecondaryColor),
+        .apply(AppTextStyles.bodySmall),
     labelMedium: BoldTextStyleDecorator()
-        .apply(AppTextStyles.labelMedium)
-        .copyWith(color: AppColors.textSecondaryColor),
+        .apply(AppTextStyles.labelMedium),
   );
 }

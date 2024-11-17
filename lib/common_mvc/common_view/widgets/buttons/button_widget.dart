@@ -43,7 +43,7 @@ class ButtonWidget extends StatelessWidget {
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(borderRadius ?? 12),
           ),
-          foregroundColor: foregroundColor ?? Colors.white,
+          foregroundColor: foregroundColor ?? AppColors.scaffoldBackgroundColor,
           backgroundColor: backgroundColor ?? AppColors.primaryColor,
         ),
         child: Padding(
@@ -53,10 +53,10 @@ class ButtonWidget extends StatelessWidget {
           child: child ??
               Text(
                 text ?? ' ',
-                style: TextStyle(
-                  fontFamily: 'Cairo',
+                style: Theme.of(context).textTheme.bodyMedium!.copyWith(
+                  color: foregroundColor ?? AppColors.scaffoldBackgroundColor,
                   fontSize: fontSize ?? (text!.length > 15 ? 17 : 20),
-                  fontWeight: FontWeight.w500,
+                  fontWeight: FontWeight.w600,
                 ),
               ),
         ),

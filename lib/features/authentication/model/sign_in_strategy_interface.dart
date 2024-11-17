@@ -6,5 +6,5 @@ import 'package:ghaza_donations_app/features/authentication/model/sign_in_result
 //Dart has no dedicated syntax for interfaces.
 //An interface in Dart is a normal class that can be implemented by other classes.
 abstract class SignInStrategy {
-  Future<SignInResult> signIn();
+  Future<FirebaseAuthResult> signIn();
 }
