@@ -17,7 +17,6 @@ class AppRouter {
     switch (settings.name) {
       case '/':
         //return MaterialPageRoute(builder: (context) =>  AuthUtilityFunctions.authenticationGateRouter());
-
       case Routes.onboardingRoute:
        // return MaterialPageRoute(
        //     builder: (context) => const OnboardingScreen());

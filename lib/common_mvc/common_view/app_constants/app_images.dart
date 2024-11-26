@@ -17,7 +17,6 @@ static const String noImage = "$baseImageUrl/no_image.png";
 
 
 
-
 //==========================================================================================//
 //Sign in providers
   static const String appleLogo = "$baseImageUrl/apple_logo.png";
@@ -50,4 +49,3 @@ static const String noImage = "$baseImageUrl/no_image.png";
 
 //==========================================================================================//
 }
-

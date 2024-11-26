@@ -1,6 +1,5 @@
 import 'package:flutter/cupertino.dart';
 import 'package:permission_handler/permission_handler.dart';
-import 'package:device_info_plus/device_info_plus.dart';
 
 class PermissionsUtilityFunctions {
   //ToDo: Consider applying command design pattern
@@ -48,11 +47,5 @@ class PermissionsUtilityFunctions {
     return await requestPermission(Permission.camera);
   }
 
-  //some packages require android 13 or above to work properly
-  //this function checks if the device is running android 13 or above
-  static Future<bool> _isAndroid13OrAbove() async {
-    final deviceInfoPlugin = DeviceInfoPlugin();
-    final androidInfo = await deviceInfoPlugin.androidInfo;
-    return androidInfo.version.sdkInt >= 33;
-  }
+
 }

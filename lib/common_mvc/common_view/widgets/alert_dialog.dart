@@ -1,5 +1,6 @@
 
 import 'package:flutter/material.dart';
+import 'package:ghaza_donations_app/common_mvc/common_controller/common_utility_classes/image_utils.dart';
 
 import '../app_constants/app_measures.dart';
 import '../theme/app_colors.dart';
@@ -24,7 +25,8 @@ class AlertDialogWidget extends StatelessWidget {
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
       title: Text(
         title ?? '',
-        style:  Theme.of(context)
+        style:
+        Theme.of(context)
             .textTheme.bodyLarge
         //   style: //bodyLargeTextStyle25,
       ),
@@ -37,6 +39,7 @@ class AlertDialogWidget extends StatelessWidget {
         ),
       ),
       actions: [
+
         actionWidget ??
             Padding(
               padding: const EdgeInsets.all(AppMeasures.mediumPadding12),
