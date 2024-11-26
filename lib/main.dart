@@ -6,9 +6,9 @@ import 'features/authentication/view/widget/auth_wrapper.dart';
 import 'features/navigation_bar/controller/navigation_controller.dart';
 
 void main()  {
-  WidgetsFlutterBinding.ensureInitialized();
+   WidgetsFlutterBinding.ensureInitialized();
    FirebaseService().initializeFirebase();
-  runApp(const MyApp());
+   runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {

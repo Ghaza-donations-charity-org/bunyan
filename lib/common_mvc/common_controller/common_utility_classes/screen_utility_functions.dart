@@ -10,7 +10,7 @@ class ScreenUtilityFunctions {
   }
 
   ScreenUtilityFunctions._internal();
-
+  //
   // double screenWidth = 0.0;
   // double screenHeight = 0.0;
   // double statusBarHeight = 0.0;

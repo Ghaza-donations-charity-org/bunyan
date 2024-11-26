@@ -19,10 +19,6 @@ class AppleSignInStrategy implements SignInStrategy {
           ],
         );
 
-        //ToDo: remove the debugPrints after testing
-        debugPrint('User ID: ${credential.userIdentifier}');
-        debugPrint('User Name: ${credential.givenName} ${credential.familyName}');
-        debugPrint('User Email: ${credential.email}');
 
       //ToDo: Implement the logic to save the user data in the local storage
 

@@ -14,8 +14,8 @@ class SignUp{
   Future<FirebaseAuthResult> signUp({required String email, required
   String password}) async {
     try {
-      _firebaseAuthServices.authInstance.createUserWithEmailAndPassword(email: email, password: password);
-      await  _firebaseAuthServices.authInstance.signInWithEmailAndPassword(
+    //  _firebaseAuthServices.authInstance.createUserWithEmailAndPassword(email: email, password: password);
+      await  _firebaseAuthServices.authInstance.createUserWithEmailAndPassword(
         email: email,
         password: password,
       );

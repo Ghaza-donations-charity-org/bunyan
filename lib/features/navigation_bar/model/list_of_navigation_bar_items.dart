@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:ghaza_donations_app/features/navigation_bar/model/navigation_bar_item_class.dart';
 
 List<NavigationBarItem> listOfNavigationBarItems = [
-  home, profile, settings, notifications
+  home, profile, settings, notifications,
 ];
 
 NavigationBarItem home = NavigationBarItem(
@@ -28,3 +28,5 @@ NavigationBarItem notifications = NavigationBarItem(
   icon: Icons.notifications,
   page: Container(),
 );
+
+

@@ -51,6 +51,11 @@ class DateTimeUtilityFunctions {
   static String formatDateTimeToTimeString({required DateTime dateTime}) {
     return DateFormat('HH:mm').format(dateTime);
   }
+
+  // Utility function to format DateTime to date string (dd/MM/yyyy)
+  static String fromTimeStampToString({required int timeStamp}) {
+    return DateFormat('dd/MM/yyyy').format(DateTime.fromMillisecondsSinceEpoch(timeStamp));
+  }
 }
 
 

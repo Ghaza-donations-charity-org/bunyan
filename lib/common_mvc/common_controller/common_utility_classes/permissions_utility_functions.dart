@@ -3,6 +3,7 @@ import 'package:permission_handler/permission_handler.dart';
 import 'package:device_info_plus/device_info_plus.dart';
 
 class PermissionsUtilityFunctions {
+  //ToDo: Consider applying command design pattern
   static Future<bool> requestPermission(Permission permission) async {
     PermissionStatus status = await permission.status;
 

@@ -23,8 +23,8 @@ textButtonTheme: TextButtonThemeData(
 
     navigationRailTheme: NavigationRailThemeData(
       backgroundColor: AppColors.white,
-      selectedLabelTextStyle: AppTextTheme.appTextTheme.bodyLarge,
-      unselectedLabelTextStyle: AppTextTheme.appTextTheme.bodyLarge,
+      selectedLabelTextStyle: AppTextTheme.appTextTheme.bodyLarge!.copyWith(color: Colors.blue.shade700),
+      unselectedLabelTextStyle: AppTextTheme.appTextTheme.bodyLarge!.copyWith(color: Colors.black),
     ),
 
     bottomNavigationBarTheme: BottomNavigationBarThemeData(

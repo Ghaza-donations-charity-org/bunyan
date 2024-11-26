@@ -22,3 +22,4 @@ class ImageUtilityFunctions {
     return imageProvider;
   }
 }
+

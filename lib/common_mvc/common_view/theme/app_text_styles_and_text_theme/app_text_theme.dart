@@ -6,7 +6,6 @@ import 'base_text_style_and_style_decorators.dart';
 // Client code that uses decorators
 class AppTextTheme {
   static final appTextTheme = TextTheme(
-
     titleLarge: BoldTextStyleDecorator()
         .apply(AppTextStyles.titleLarge),
     titleMedium: NormalTextStyleDecorator()

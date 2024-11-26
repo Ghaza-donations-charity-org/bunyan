@@ -8,12 +8,9 @@ import 'package:ghaza_donations_app/common_mvc/common_view/widgets/text_fields/t
 import 'package:ghaza_donations_app/features/authentication/model/sign_in_with_google.dart';
 import 'package:ghaza_donations_app/features/authentication/view/pages/sign_up_screen.dart';
 import '../../../../common_mvc/common_view/theme/app_text_styles_and_text_theme/app_text_styles.dart';
-import '../../../../common_mvc/common_view/widgets/alert_dialog.dart';
 import '../../../main_screens_wrapper/view/page/screens_wrapper.dart';
 import '../../controller/sign_in_controller.dart';
-import '../../model/sign_in_result.dart';
 import '../../model/sign_in_with_apple.dart';
-import '../../model/sign_in_with_email_and_password.dart';
 
 class SignInScreen extends StatefulWidget {
   const SignInScreen({super.key});

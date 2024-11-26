@@ -21,7 +21,7 @@ class SignInWithEmailAndPassword implements SignInStrategy {
   @override
   Future<FirebaseAuthResult> signIn() async {
     try {
-      _firebaseAuthServices.authInstance.signInWithEmailAndPassword(email: email, password: password);
+      //_firebaseAuthServices.authInstance.signInWithEmailAndPassword(email: email, password: password);
           await  _firebaseAuthServices.authInstance.signInWithEmailAndPassword(
         email: email,
         password: password,
@@ -29,7 +29,7 @@ class SignInWithEmailAndPassword implements SignInStrategy {
       return FirebaseAuthResult(true);
     } on FirebaseAuthException catch (e) {
       throw FirebaseAuthServices.mapFirebaseAuthExceptionToMessage(e);
-    }catch (e) {
+    } catch (e) {
       return FirebaseAuthResult(false, e.toString());
     }
   }
