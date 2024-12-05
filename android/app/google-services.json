@@ -7,6 +7,42 @@
   "client": [
     {
       "client_info": {
+        "mobilesdk_app_id": "1:33023341381:android:7c95789e837bb5002ec42c",
+        "android_client_info": {
+          "package_name": "com.example.ghaza_donations_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "33023341381-o0fn3qr4dfgrr5jdh444hbjut6pnmmd5.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDQOWgi2V7_V4HYEwHyx-YaFVjIjkluPEA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "33023341381-o0fn3qr4dfgrr5jdh444hbjut6pnmmd5.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "33023341381-vtdr3stfnc9cb83u76ek6dlfd3ucec0e.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.ghazaDonationsApp"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
         "mobilesdk_app_id": "1:33023341381:android:c332f535b7f7d4532ec42c",
         "android_client_info": {
           "package_name": "com.gazadonationsapp.app"

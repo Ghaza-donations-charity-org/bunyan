@@ -52,7 +52,7 @@ class DefaultFirebaseOptions {
 
   static const FirebaseOptions android = FirebaseOptions(
     apiKey: 'AIzaSyDQOWgi2V7_V4HYEwHyx-YaFVjIjkluPEA',
-    appId: '1:33023341381:android:c332f535b7f7d4532ec42c',
+    appId: '1:33023341381:android:7c95789e837bb5002ec42c',
     messagingSenderId: '33023341381',
     projectId: 'gaza-donations-app',
     storageBucket: 'gaza-donations-app.firebasestorage.app',
