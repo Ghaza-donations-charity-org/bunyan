@@ -4,6 +4,8 @@ import 'package:ghaza_donations_app/features/main_screens_wrapper/view/page/scre
 import '../model/sign_in_result.dart';
 import '../model/sign_in_strategy_interface.dart';
 import 'auth_validation_exception.dart';
+import 'package:ghaza_donations_app/features/authentication/model/sign_in_strategy_factory.dart';
+
 
 class SignInController {
   BuildContext context;
@@ -12,13 +14,13 @@ class SignInController {
 
   SignInStrategy? _strategy;
 
-  void setStrategy(SignInStrategy strategy) {
-    _strategy = strategy;
+  // Method to set strategy dynamically using the factory
+  void setStrategy(AuthType authType, {String? email, String? password}) {
+    _strategy = SignInStrategyFactory.create(authType, email: email, password: password);
   }
 
   (bool isValid, String? errorMessage) validateSignInData({required String email, required
       String password}) {
-    print('validating email: $email, password: $password');
     String? emailValidationResult =
     AuthInputValidator.validateEmailAndReturnErrorMessage(email);
     String? passwordValidationResult =
@@ -45,3 +47,4 @@ class SignInController {
     }
   }
 }
+

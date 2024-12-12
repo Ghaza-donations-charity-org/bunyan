@@ -5,11 +5,14 @@ import 'package:ghaza_donations_app/common_mvc/common_view/app_constants/app_mea
 import 'package:ghaza_donations_app/common_mvc/common_view/widgets/buttons/button_widget.dart';
 import 'package:ghaza_donations_app/common_mvc/common_view/widgets/logo.dart';
 import 'package:ghaza_donations_app/common_mvc/common_view/widgets/text_fields/text_field.dart';
+import 'package:ghaza_donations_app/features/authentication/model/sign_in_strategy_factory.dart';
 import 'package:ghaza_donations_app/features/authentication/model/sign_in_with_google.dart';
 import 'package:ghaza_donations_app/features/authentication/view/pages/sign_up_screen.dart';
 import '../../../../common_mvc/common_view/theme/app_text_styles_and_text_theme/app_text_styles.dart';
+import '../../../../common_mvc/common_view/widgets/alert_dialog.dart';
 import '../../../main_screens_wrapper/view/page/screens_wrapper.dart';
 import '../../controller/sign_in_controller.dart';
+import '../../model/sign_in_result.dart';
 import '../../model/sign_in_with_apple.dart';
 
 class SignInScreen extends StatefulWidget {
@@ -187,7 +190,7 @@ class _SignInScreenState extends State<SignInScreen> {
   Widget signInWithGoogleButton() {
     return GestureDetector(
       onTap: () {
-        signInController.setStrategy(GoogleSignInStrategy());
+        signInController.setStrategy(AuthType.google);
         signInController.signIn();
       },
       child: CircleAvatar(
@@ -205,7 +208,7 @@ class _SignInScreenState extends State<SignInScreen> {
   Widget signInWithAppleButton() {
     return GestureDetector(
       onTap: () {
-        signInController.setStrategy(AppleSignInStrategy());
+        signInController.setStrategy(AuthType.apple);
         signInController.signIn();
       },
       child: CircleAvatar(
@@ -251,33 +254,33 @@ class _SignInScreenState extends State<SignInScreen> {
       onPressed: () async {
         SignInController signInController = SignInController(context: context);
 
-        Navigator.pushReplacement(context,
-            MaterialPageRoute(builder: (context) => const ScreensWrapper()));
+        // Navigator.pushReplacement(context,
+        //     MaterialPageRoute(builder: (context) => const ScreensWrapper()));
 
-      //   try {
-      //     //validate user input first
-      //     signInController.validateSignInData(
-      //         email: emailController.text, password: passwordController.text);
-      //     //if valid, set the strategy
-      //     signInController.setStrategy(SignInWithEmailAndPassword(
-      //         email: emailController.text, password: passwordController.text));
-      //     //now, sign in
-      //     try {
-      //       FirebaseAuthResult signInResult = await signInController.signIn();
-      //       signInController.handleSignInResult(signInResult);
-      //     } catch (e) {
-      //       showDialog(
-      //           context: context,
-      //           builder: (context) =>
-      //               AlertDialogWidget(contentText: e.toString()));
-      //     }
-      //   } catch (e) {
-      //     //handle the exception
-      //     showDialog(
-      //         context: context,
-      //         builder: (context) =>
-      //             AlertDialogWidget(contentText: e.toString()));
-      //   }
+        try {
+          //validate user input first
+          signInController.validateSignInData(
+              email: emailController.text, password: passwordController.text);
+          //if valid, set the strategy
+          signInController.setStrategy(AuthType.emailAndPassword,
+              email: emailController.text, password: passwordController.text);
+          //now, sign in
+          try {
+            FirebaseAuthResult signInResult = await signInController.signIn();
+            signInController.handleSignInResult(signInResult);
+          } catch (e) {
+            showDialog(
+                context: context,
+                builder: (context) =>
+                    AlertDialogWidget(contentText: e.toString()));
+          }
+        } catch (e) {
+          //handle the exception
+          showDialog(
+              context: context,
+              builder: (context) =>
+                  AlertDialogWidget(contentText: e.toString()));
+        }
        },
 
       text: 'Sign In',
