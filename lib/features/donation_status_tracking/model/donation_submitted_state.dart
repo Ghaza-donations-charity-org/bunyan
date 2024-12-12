@@ -1,25 +1,27 @@
+import 'package:ghaza_donations_app/features/donation_status_tracking/model/donation_approved_by_admin.dart';
+
 import 'donation_context.dart';
 import 'donation_failed.dart';
 import 'donation_received_state.dart';
 import 'donation_state.dart';
 
-class DonationConfirmedState implements DonationState {
+class DonationSubmittedState implements DonationState {
   @override
   void handleRequest(DonationContext context) {
     try {
       context.setState(getNextState(context));
     } catch (error) {
-      context.setState(DonationFailedState("Error confirming donation: ${error.toString()}"));
+      context.setState(DonationFailedState("Error submitting donation: ${error.toString()}"));
     }
   }
 
   @override
   DonationState? getNextState(DonationContext context) {
     try {
-      print("Donation Confirmed Successfully!");
-      return DonationReceivedState();
+      print("Donation Submitted Successfully!");
+      return DonationApprovedState();
     } catch (error) {
-      return DonationFailedState("Error confirming donation: ${error.toString()}");
+      return DonationFailedState("Error submitting donation: ${error.toString()}");
     }
   }
 
@@ -30,5 +32,5 @@ class DonationConfirmedState implements DonationState {
   String getStatusMessage() => "Donation request submitted by the donor was confirmed.";
 
   @override
-  String getName() => "Donation Confirmed";
+  String getName() => "Donation Submitted";
 }

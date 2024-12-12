@@ -1,5 +1,7 @@
+import 'package:ghaza_donations_app/features/donation_status_tracking/model/donation_approved_by_admin.dart';
+
 import 'donation_at_warehouse_state.dart';
-import 'donation_confirmed_state.dart';
+import 'donation_submitted_state.dart';
 import 'donation_context.dart';
 import 'donation_failed.dart';
 import 'donation_state.dart';
@@ -21,7 +23,7 @@ class DonationReceivedState implements DonationState {
   }
 
   @override
-  DonationState? getPreviousState() => DonationConfirmedState();
+  DonationState? getPreviousState() => DonationApprovedState();
 
   @override
   String getStatusMessage() => "Donation received from the donor by our delivery services.";

@@ -1,11 +1,11 @@
-import 'donation_confirmed_state.dart';
+import 'donation_submitted_state.dart';
 import 'donation_state.dart';
 
 class DonationContext {
   late DonationState _state;
 
   DonationContext() {
-    _state = DonationConfirmedState(); // Default state.
+    _state = DonationSubmittedState(); // Default state.
   }
 
   void setState(DonationState? state) {
