@@ -5,6 +5,7 @@ import 'package:ghaza_donations_app/common_mvc/common_view/app_constants/app_mea
 import 'package:ghaza_donations_app/common_mvc/common_view/widgets/buttons/button_widget.dart';
 import 'package:ghaza_donations_app/common_mvc/common_view/widgets/logo.dart';
 import 'package:ghaza_donations_app/common_mvc/common_view/widgets/text_fields/text_field.dart';
+import 'package:ghaza_donations_app/features/authentication/model/sign_in_strategy_factory.dart';
 import 'package:ghaza_donations_app/features/authentication/model/sign_in_with_google.dart';
 import 'package:ghaza_donations_app/features/authentication/view/pages/sign_up_screen.dart';
 import '../../../../common_mvc/common_view/theme/app_text_styles_and_text_theme/app_text_styles.dart';
@@ -187,7 +188,7 @@ class _SignInScreenState extends State<SignInScreen> {
   Widget signInWithGoogleButton() {
     return GestureDetector(
       onTap: () {
-        signInController.setStrategy(GoogleSignInStrategy());
+        signInController.setStrategy(AuthType.google);
         signInController.signIn();
       },
       child: CircleAvatar(
@@ -205,7 +206,7 @@ class _SignInScreenState extends State<SignInScreen> {
   Widget signInWithAppleButton() {
     return GestureDetector(
       onTap: () {
-        signInController.setStrategy(AppleSignInStrategy());
+        signInController.setStrategy(AuthType.apple);
         signInController.signIn();
       },
       child: CircleAvatar(
