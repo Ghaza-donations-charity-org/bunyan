@@ -2,7 +2,7 @@ import 'donation_approved_by_admin.dart';
 import 'donation_at_warehouse_state.dart';
 import 'donation_failed.dart';
 import 'donation_finalised_state.dart';
-import 'donation_item.dart';
+import 'donation_items/donation_item.dart';
 import 'donation_received_state.dart';
 import 'donation_state.dart';
 import 'donation_submitted_state.dart';
