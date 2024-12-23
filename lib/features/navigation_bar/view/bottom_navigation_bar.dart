@@ -23,7 +23,7 @@ class BottomNavigationBarWidget extends StatelessWidget {
           ],
           currentIndex: navigationController.currentIndex,
           onTap: (index) {
-            navigationController.updateIndex(index);
+            navigationController.navigateWithAnimation(index);
           },
         );
       },
