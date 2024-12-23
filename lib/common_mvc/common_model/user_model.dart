@@ -13,6 +13,12 @@ class User {
 //TODO: This could be a part of the protection proxy? like this can call a function men henak to check for credentials or validity.
     return verifier == "admin_token";
   }
-
-
+  // Method to manipulate points, restricted by a verifier
+  void manipulatePoints(int amount, String verifier) {
+    if (_isAdmin(verifier)) {
+      _setPoints(_points + amount);
+    } else {
+      throw Exception("Unauthorized access to manipulate points.");
+    }
+  }
 }
