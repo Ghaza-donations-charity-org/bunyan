@@ -2,6 +2,7 @@ import 'donation_approved_by_admin.dart';
 import 'donation_at_warehouse_state.dart';
 import 'donation_failed.dart';
 import 'donation_finalised_state.dart';
+import 'donation_item.dart';
 import 'donation_received_state.dart';
 import 'donation_state.dart';
 import 'donation_submitted_state.dart';
@@ -22,7 +23,12 @@ class DonationContext {
   }
   // List of donation items
   List<DonationItem> donationItems = [];
-  
+
+  void addDonationItem(DonationItem item) {
+    donationItems.add(item);
+    print("Added donation item: ${item.name} with ${item.points} points.");
+  }
+
   void setState(DonationState? state) {
     if (state != null) {
       _state = state;
