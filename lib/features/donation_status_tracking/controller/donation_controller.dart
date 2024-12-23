@@ -1,9 +1,15 @@
+import '../../../common_mvc/common_model/user_model.dart';
 import '../model/donation_context.dart';
 import '../model/donation_failed.dart';
 import '../model/donation_state.dart';
 
 class DonationController {
-  final DonationContext _context = DonationContext();
+  final UserModel user;
+  late final DonationContext _context;
+
+  DonationController(this.user) {
+    _context = DonationContext(user); // Initialize _context in the constructor.
+  }
 
   // Delegate methods for state transitions
   void proceedToNextState() => _context.proceedToNextState();

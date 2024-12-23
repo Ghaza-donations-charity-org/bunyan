@@ -1,3 +1,5 @@
+import '../../../common_mvc/common_controller/user_controller.dart';
+import '../../../common_mvc/common_model/user_model.dart';
 import 'donation_approved_by_admin.dart';
 import 'donation_at_warehouse_state.dart';
 import 'donation_failed.dart';
@@ -10,21 +12,26 @@ import 'donation_submitted_state.dart';
 
 class DonationContext {
   late DonationState _state;
-  final List<DonationState> _states = [
-    DonationSubmittedState(),
-    DonationApprovedState(),
-    DonationReceivedState(),
-    DonationAtWarehouseState(),
-    DonationFinalizedState(),
-    DonationFailedState("Error occurred"),
-  ];
+  final UserController userController;
+  late final List<DonationState> _states;
 
-  DonationContext() {
-    _state = DonationSubmittedState(); // Default state.
+  DonationContext(UserModel user)
+      : userController = UserController(user) {
+    _states = [
+      DonationSubmittedState(),
+      DonationApprovedState(),
+      DonationReceivedState(),
+      DonationAtWarehouseState(userController: null),
+      DonationFinalizedState(userController: userController),
+      DonationFailedState("Error occurred"),
+    ];
+    _state = _states.first; // Default state.
   }
+
   // List of donation items
   List<DonationItem> userSelectedItems = [];
-// Add a donation item by category
+
+  // Add a donation item by category
   void addDonationCategory(String categoryName) {
     var predefinedItem = PredefinedDonationItems.findItemByName(categoryName);
     if (predefinedItem != null) {
@@ -35,6 +42,19 @@ class DonationContext {
       userSelectedItems.add(DonationItem(name: categoryName, points: 0));
       print(
           "Added custom donation item: $categoryName. Points pending admin allocation.");
+    }
+  }
+
+  // Process points in the finalized state
+  void processPoints(UserController userController) {
+    for (var item in userSelectedItems) {
+      if (item.points > 0) {
+        userController.autoUpdatePoints(item.points, "autoTriggerKey");
+        print("Automatically added ${item.points} points for ${item.name}.");
+      } else {
+        print(
+            "Pending points allocation for custom donation item: ${item.name}.");
+      }
     }
   }
 
@@ -54,9 +74,11 @@ class DonationContext {
     if (state != null) {
       _state = state;
     } else {
-      print("State transition failed. No valid next state.");
+      print("State transition failed. State is null.");
     }
   }
+
+
   void proceedToNextState() {
     final nextState = _state.getNextState(this);
     if (nextState != null) {
@@ -84,7 +106,7 @@ class DonationContext {
   }
 
   int getCurrentStateIndex(DonationState state) {
-    return _states.indexWhere((s) => s.getName() == state.getName());
+    return _states.indexWhere((s) => s.getName() == _state.getName());
   }
 
   List<DonationState> getAllStates() {

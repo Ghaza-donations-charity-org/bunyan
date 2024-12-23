@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../../../common_mvc/common_model/user_model.dart';
 import '../controller/donation_controller.dart';
 import '../model/donation_finalised_state.dart';
 import '../model/donation_state.dart';
@@ -15,7 +16,9 @@ class _DonationScreenState extends State<DonationScreen> {
   @override
   void initState() {
     super.initState();
-    _controller = DonationController(); // Controller handles its own context
+    UserModel user = UserModel(); // Initialize the UserModel instance.
+    _controller = DonationController(
+        user); // Pass the UserModel instance to the DonationController.  }
   }
 
   void _onNextPressed() {
@@ -65,10 +68,7 @@ class _DonationScreenState extends State<DonationScreen> {
     final currentState = _controller.getCurrentState();
 
     return Column(
-      children: states
-          .asMap()
-          .entries
-          .map((entry) {
+      children: states.asMap().entries.map((entry) {
         final index = entry.key;
         final state = entry.value;
 
@@ -107,9 +107,11 @@ class _DonationScreenState extends State<DonationScreen> {
       }).toList(),
     );
   }
+
   @override
   Widget build(BuildContext context) {
-    final isFinalState = _controller.getCurrentState() is DonationFinalizedState;
+    final isFinalState =
+        _controller.getCurrentState() is DonationFinalizedState;
     final isSuccessfulFinalState = isFinalState &&
         (_controller.getCurrentState() as DonationFinalizedState).isSuccessful;
 

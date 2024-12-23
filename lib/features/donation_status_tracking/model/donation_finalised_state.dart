@@ -6,15 +6,15 @@ import 'donation_at_warehouse_state.dart';
 
 class DonationFinalizedState implements DonationState {
   final bool isSuccessful;
-  final List<String> autoPointItems; // List of items eligible for automatic points
   final UserController userController;
 
-  DonationFinalizedState({this.isSuccessful = false, required this.autoPointItems, required this.userController}); // Default value ensures no null values.
+  DonationFinalizedState({this.isSuccessful = false, required this.userController}); // Default value ensures no null values.
 
   @override
   void handleRequest(DonationContext context) {
     if (isSuccessful) {
       print("Donation successfully finalized. Processing points...");
+      context.processPoints(userController);
     } else {
       print("Finalizing donation...");
     }
@@ -42,5 +42,5 @@ class DonationFinalizedState implements DonationState {
   String getName() => "Donation Finalized";
 
   @override
-  DonationState? getPreviousState() => DonationAtWarehouseState();
+  DonationState? getPreviousState() => DonationAtWarehouseState(userController:userController);
 }
