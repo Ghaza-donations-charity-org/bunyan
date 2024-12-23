@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:ghaza_donations_app/features/donation_status_tracking/model/donation_submitted_state.dart';
 
 import '../../../common_mvc/common_controller/user_controller.dart';
@@ -9,11 +10,11 @@ import 'donation_state.dart';
 class DonationApprovedState implements DonationState {
 
   @override
-  void handleRequest(DonationContext context) {
+  void handleRequest(DonationContext donationContext, BuildContext context) {
     try {
-      context.setState(getNextState(context));
+      donationContext.setState(getNextState(donationContext));
     } catch (error) {
-      context.setState(DonationFailedState("Error approving donation: ${error.toString()}"));
+      donationContext.setState(DonationFailedState("Error approving donation: ${error.toString()}"));
     }
   }
 

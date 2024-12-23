@@ -1,3 +1,6 @@
+import 'package:flutter/cupertino.dart';
+import 'package:provider/provider.dart';
+
 import '../../../common_mvc/common_controller/user_controller.dart';
 import '../../../common_mvc/common_model/user_model.dart';
 import 'donation_approved_by_admin.dart';
@@ -12,17 +15,15 @@ import 'donation_submitted_state.dart';
 
 class DonationContext {
   late DonationState _state;
-  final UserController userController;
   late final List<DonationState> _states;
 
-  DonationContext(UserModel user)
-      : userController = UserController(user) {
+  DonationContext(UserModel user) {
     _states = [
       DonationSubmittedState(),
       DonationApprovedState(),
       DonationReceivedState(),
-      DonationAtWarehouseState(userController: null),
-      DonationFinalizedState(userController: userController),
+      DonationAtWarehouseState(),
+      DonationFinalizedState(),
       DonationFailedState("Error occurred"),
     ];
     _state = _states.first; // Default state.
@@ -46,7 +47,8 @@ class DonationContext {
   }
 
   // Process points in the finalized state
-  void processPoints(UserController userController) {
+  void processPoints(BuildContext context) {
+    final userController = Provider.of<UserControllerProvider>(context);
     for (var item in userSelectedItems) {
       if (item.points > 0) {
         userController.autoUpdatePoints(item.points, "autoTriggerKey");
@@ -113,7 +115,7 @@ class DonationContext {
     return _states;
   }
 
-  void handleCurrentState() {
-    _state.handleRequest(this);
+  void handleCurrentState(BuildContext context) {
+    _state.handleRequest(this, context);
   }
 }

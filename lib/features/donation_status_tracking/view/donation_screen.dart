@@ -12,13 +12,13 @@ class DonationScreen extends StatefulWidget {
 
 class _DonationScreenState extends State<DonationScreen> {
   late DonationController _controller;
+  UserModel user = UserModel();
 
   @override
   void initState() {
     super.initState();
-    UserModel user = UserModel(); // Initialize the UserModel instance.
-    _controller = DonationController(
-        user); // Pass the UserModel instance to the DonationController.  }
+  // Initialize the UserModel instance.
+    _controller = DonationController(user); // Pass the UserModel instance to the DonationController.  }
   }
 
   void _onNextPressed() {

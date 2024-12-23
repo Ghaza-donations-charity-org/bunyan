@@ -1,5 +1,6 @@
 class UserModel {
   int _points = 0; // Private field to store points
+  //todo: this checks current user and manipulates his field (points) instead
   // Getter for points
   int get points => _points;
 

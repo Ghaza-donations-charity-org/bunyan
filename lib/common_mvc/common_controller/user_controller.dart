@@ -1,9 +1,13 @@
+import 'package:provider/provider.dart';
+
 import '../common_model/user_model.dart';
 
-class UserController {
+class UserControllerProvider extends ChangeNotifierProvider{
   final UserModel user;
+  //todo: get current user id and as docs as whole
+  //todo: firestore services folder responsible for manipulating user data (points)
 
-  UserController(this.user);
+  UserControllerProvider({required this.user, required super.create});
 
   void autoUpdatePoints(int amount, String triggerKey) {
     try {

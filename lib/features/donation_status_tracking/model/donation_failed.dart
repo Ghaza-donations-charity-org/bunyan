@@ -1,3 +1,5 @@
+import 'package:flutter/cupertino.dart';
+
 import 'donation_context.dart';
 import 'donation_state.dart';
 
@@ -28,7 +30,7 @@ class DonationFailedState implements DonationState {
   }
 
   @override
-  void handleRequest(DonationContext context) {
+  void handleRequest(DonationContext donationContext, BuildContext context) {
     print(getStatusMessage());
     print("Provide options to resolve the error or refresh the state.");
     // Display an error message and offer resolution steps in the UI
