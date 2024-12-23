@@ -3,6 +3,7 @@ import 'donation_at_warehouse_state.dart';
 import 'donation_failed.dart';
 import 'donation_finalised_state.dart';
 import 'donation_items/donation_item.dart';
+import 'donation_items/predefined_donation_items_list.dart';
 import 'donation_received_state.dart';
 import 'donation_state.dart';
 import 'donation_submitted_state.dart';
@@ -22,22 +23,30 @@ class DonationContext {
     _state = DonationSubmittedState(); // Default state.
   }
   // List of donation items
-  List<DonationItem> donationItems = [];
-
-  void addDonationItem(DonationItem item) {
-    donationItems.add(item);
-    print("Added donation item: ${item.name} with ${item.points} points.");
+  List<DonationItem> userSelectedItems = [];
+// Add a donation item by category
+  void addDonationCategory(String categoryName) {
+    var predefinedItem = PredefinedDonationItems.findItemByName(categoryName);
+    if (predefinedItem != null) {
+      userSelectedItems.add(predefinedItem);
+      print(
+          "Added predefined donation item: ${predefinedItem.name} with ${predefinedItem.points} points.");
+    } else {
+      userSelectedItems.add(DonationItem(name: categoryName, points: 0));
+      print(
+          "Added custom donation item: $categoryName. Points pending admin allocation.");
+    }
   }
 
   // Removes a donation item from the context
   void removeDonationItem(DonationItem item) {
-    donationItems.remove(item);
+    userSelectedItems.remove(item);
     print("Removed donation item: ${item.name}.");
   }
 
   // Clears all donation items from the context
   void clearDonationItems() {
-    donationItems.clear();
+    userSelectedItems.clear();
     print("All donation items cleared.");
   }
 
