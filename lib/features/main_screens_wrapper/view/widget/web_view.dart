@@ -13,15 +13,21 @@ class WebAppView extends StatelessWidget {
     return Consumer<NavigationController>(
         builder: (context, navigationController, child) {
       return Scaffold(
-      body: Row(
-        children: [
-          const SideNavigationRail(),
-          Expanded(
-            child: listOfMainScreens[navigationController.currentIndex],
-          ),
-        ],
-      ),
-    );
+        body: Row(
+          children: [
+            const SideNavigationRail(),
+            Expanded(
+              child: PageView(
+                controller: navigationController.pageController,
+                onPageChanged: (index) {
+                  navigationController.updateIndex(index);
+                },
+                children: listOfMainScreens,
+              ),
+            ),
+          ],
+        ),
+      );
     });
   }
 }
