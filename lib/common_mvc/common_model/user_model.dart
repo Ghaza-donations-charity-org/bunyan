@@ -21,4 +21,14 @@ class User {
       throw Exception("Unauthorized access to manipulate points.");
     }
   }
+
+  // Method for automatic updates, restricted by an authorization key
+  void autoUpdatePoints(int amount, String triggerKey) {
+    // Replace "autoTriggerKey" with your actual authorization key for external logic
+    if (triggerKey == "autoTriggerKey") {
+      _setPoints(_points + amount);
+    } else {
+      throw Exception("Unauthorized access to auto-update points.");
+    }
+  }
 }
