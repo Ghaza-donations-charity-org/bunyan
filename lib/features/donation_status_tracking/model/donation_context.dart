@@ -35,6 +35,12 @@ class DonationContext {
     print("Removed donation item: ${item.name}.");
   }
 
+  // Clears all donation items from the context
+  void clearDonationItems() {
+    donationItems.clear();
+    print("All donation items cleared.");
+  }
+
   void setState(DonationState? state) {
     if (state != null) {
       _state = state;
