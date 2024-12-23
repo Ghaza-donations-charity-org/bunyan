@@ -2,7 +2,6 @@ import 'package:ghaza_donations_app/features/donation_status_tracking/model/dona
 
 import 'donation_context.dart';
 import 'donation_failed.dart';
-import 'donation_received_state.dart';
 import 'donation_state.dart';
 
 class DonationSubmittedState implements DonationState {
@@ -29,7 +28,7 @@ class DonationSubmittedState implements DonationState {
   DonationState? getPreviousState() => null; // No previous state for the first one.
 
   @override
-  String getStatusMessage() => "Donation request submitted by the donor was confirmed.";
+  String getStatusMessage() => "Donation request by the donor was submitted.";
 
   @override
   String getName() => "Donation Submitted";

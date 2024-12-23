@@ -4,23 +4,36 @@ import 'donation_state.dart';
 import 'donation_at_warehouse_state.dart';
 
 class DonationFinalizedState implements DonationState {
-  @override
-  void handleRequest(DonationContext context) {
-    print("Adding user points and finalizing donation...");
-  }
+  final bool isSuccessful;
+
+  DonationFinalizedState({this.isSuccessful = false}); // Default value ensures no null values.
 
   @override
-  DonationState? getNextState(DonationContext context) {
-    try {
-      print("Donation finalised Successfully!");
-      return null;
-    } catch (error) {
-      return DonationFailedState("Error finalising donation: ${error.toString()}");
+  void handleRequest(DonationContext context) {
+    if (isSuccessful) {
+      print("Donation successfully finalized, and user points added.");
+    } else {
+      print("Finalizing donation...");
     }
   }
 
   @override
-  String getStatusMessage() => "Donation finalized, and donor points have been added.";
+  DonationState? getNextState(DonationContext context) {
+    if (isSuccessful) {
+      print("Donation finalized successfully!");
+      return null; // No further state after success
+    } else {
+      // Simulate a failure for demonstration purposes
+      return DonationFailedState("Error finalizing donation.");
+    }
+  }
+
+  @override
+  String getStatusMessage() {
+    return isSuccessful
+        ? "Donation successfully finalized, and donor points have been added."
+        : "Finalizing donation...";
+  }
 
   @override
   String getName() => "Donation Finalized";
