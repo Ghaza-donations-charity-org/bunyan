@@ -29,6 +29,12 @@ class DonationContext {
     print("Added donation item: ${item.name} with ${item.points} points.");
   }
 
+  // Removes a donation item from the context
+  void removeDonationItem(DonationItem item) {
+    donationItems.remove(item);
+    print("Removed donation item: ${item.name}.");
+  }
+
   void setState(DonationState? state) {
     if (state != null) {
       _state = state;
