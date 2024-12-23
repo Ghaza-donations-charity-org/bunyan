@@ -20,7 +20,9 @@ class DonationContext {
   DonationContext() {
     _state = DonationSubmittedState(); // Default state.
   }
-
+  // List of donation items
+  List<DonationItem> donationItems = [];
+  
   void setState(DonationState? state) {
     if (state != null) {
       _state = state;

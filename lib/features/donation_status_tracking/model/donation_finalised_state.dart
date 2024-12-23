@@ -14,7 +14,7 @@ class DonationFinalizedState implements DonationState {
   @override
   void handleRequest(DonationContext context) {
     if (isSuccessful) {
-      print("Donation successfully finalized, and user points added.");
+      print("Donation successfully finalized. Processing points...");
     } else {
       print("Finalizing donation...");
     }
