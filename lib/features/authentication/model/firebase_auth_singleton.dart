@@ -33,6 +33,10 @@ class FirebaseAuthServices {
 
   User? get currentUser => _firebaseAuth.currentUser;
 
+  Future<void> signOut() async {
+    await _firebaseAuth.signOut();
+  }
+
 
   static String mapFirebaseAuthExceptionToMessage(FirebaseAuthException e) {
     switch (e.code) {

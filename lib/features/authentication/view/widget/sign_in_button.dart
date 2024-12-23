@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:ghaza_donations_app/common_mvc/common_view/widgets/alert_dialog.dart';
 import 'package:ghaza_donations_app/common_mvc/common_view/widgets/buttons/button_widget.dart';
 import 'package:ghaza_donations_app/features/authentication/controller/sign_in_controller.dart';
+import 'package:ghaza_donations_app/features/authentication/model/sign_in_strategy_factory.dart';
 import 'package:ghaza_donations_app/features/authentication/model/sign_in_with_email_and_password.dart';
 import '../../model/sign_in_result.dart';
 
@@ -22,7 +23,7 @@ class SignInButton extends StatelessWidget {
         //validate user input first
         signInController.validateSignInData(email: email, password: password);
         //if valid, set the strategy
-        signInController.setStrategy(SignInWithEmailAndPassword(email: email, password: password));
+        signInController.setStrategy(AuthType.emailAndPassword, email: email, password: password);
         //now, sign in
         try{
           FirebaseAuthResult signInResult =  await signInController.signIn();
