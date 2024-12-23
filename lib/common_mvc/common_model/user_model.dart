@@ -7,4 +7,12 @@ class User {
   void _setPoints(int points) {
     _points = points;
   }
+
+  // Example logic to check if the verifier is valid
+  bool _isAdmin(String verifier) {
+//TODO: This could be a part of the protection proxy? like this can call a function men henak to check for credentials or validity.
+    return verifier == "admin_token";
+  }
+
+
 }
