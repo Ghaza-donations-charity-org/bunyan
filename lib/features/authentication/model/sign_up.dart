@@ -19,11 +19,11 @@ class SignUp{
         email: email,
         password: password,
       );
-      return FirebaseAuthResult(true);
+      return FirebaseAuthResult(success: true);
     } on FirebaseAuthException catch (e) {
       throw FirebaseAuthServices.mapFirebaseAuthExceptionToMessage(e);
     }catch (e) {
-      return FirebaseAuthResult(false, e.toString());
+      return FirebaseAuthResult(success: false, errorMessage: e.toString());
     }
   }
 
