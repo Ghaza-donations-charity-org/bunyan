@@ -13,7 +13,7 @@ class DonationScreen extends StatefulWidget {
 
 class _DonationScreenState extends State<DonationScreen> {
   late DonationController _controller;
-  late UserModel user;
+  late final UserModel user;
 
   @override
   void initState() {

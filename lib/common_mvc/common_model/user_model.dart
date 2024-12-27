@@ -8,6 +8,7 @@ class UserModel {
 
   UserModel() {
     userId = _firebaseFacade.getCurrentUserId();
+    print(userId);
   }
 
   // Getter for points
