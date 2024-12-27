@@ -15,4 +15,9 @@ class FireStoreServices {
   Future<void> updateDocument(String collection, String docId, Map<String, dynamic> data) async {
     await _firestore.collection(collection).doc(docId).update(data);
   }
+
+  Future<Map<String, dynamic>?> getDocumentById(String collection, String docId) async {
+    final docSnapshot = await _firestore.collection(collection).doc(docId).get();
+    return docSnapshot.exists ? docSnapshot.data() : null;
+  }
 }
