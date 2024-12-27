@@ -40,6 +40,7 @@ class SignInController {
 
   void handleSignInResult(FirebaseAuthResult signInResult) {
     if (signInResult.success && signInResult.errorMessage == null) {
+
       Navigator.pushReplacement(context,
           MaterialPageRoute(builder: (context) => const ScreensWrapper()));
     } else {

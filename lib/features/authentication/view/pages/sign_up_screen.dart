@@ -235,7 +235,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
 
         try {
           //validate user input first
-          signUpController.validateSignInData(
+          signUpController.validateSignUpData(
               email: emailController.text, password: passwordController.text);
 
           //now, sign up

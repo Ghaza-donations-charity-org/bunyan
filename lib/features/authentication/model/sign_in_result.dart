@@ -1,6 +1,7 @@
 class FirebaseAuthResult {
   final bool success;
   final String? errorMessage;
+  final bool isAdmin;
 
-  FirebaseAuthResult(this.success, [this.errorMessage]);
+  FirebaseAuthResult({required this.success, this.isAdmin = false, this.errorMessage});
 }
