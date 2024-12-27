@@ -18,8 +18,7 @@ class _DonationScreenState extends State<DonationScreen> {
   @override
   void initState() {
     super.initState();
-    final userId = FirebaseAuth.instance.currentUser?.uid ?? '';
-    user = UserModel(userId);
+    user = UserModel();
   // Initialize the UserModel instance.
     _controller = DonationController(user); // Pass the UserModel instance to the DonationController.  }
   }

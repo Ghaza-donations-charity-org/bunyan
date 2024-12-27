@@ -37,19 +37,21 @@
 
 
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 import 'firebase_models/firebase_facade.dart';
 
 class UserModel {
   final FirebaseFacade _firebaseFacade = FirebaseFacade();
 
-  // Private field to store user points
   int _points = 0;
-
-  // User identifier (e.g., Firebase user ID)
   final String userId;
 
-  UserModel(this.userId);
+  UserModel() : userId = FirebaseAuth.instance.currentUser?.uid ?? '' {
+    if (userId.isEmpty) {
+      throw Exception("No authenticated user found.");
+    }
+  }
 
   // Getter for points
   int get points => _points;
