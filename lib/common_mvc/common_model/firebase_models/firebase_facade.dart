@@ -45,11 +45,21 @@ class FirebaseFacade {
 
   Future<void> signOut() => _authService.signOut();
 
+// Firestore Methods
   Future<void> saveDataToFirestore(String collection, Map<String, dynamic> data) {
     return _firestoreService.addData(collection, data);
   }
 
   Future<List<Map<String, dynamic>>> getDataFromFirestore(String collection) {
     return _firestoreService.getData(collection);
+  }
+
+  Future<void> updateDocument(
+      String collection, String docId, Map<String, dynamic> data) {
+    return _firestoreService.updateDocument(collection, docId, data);
+  }
+
+  Future<Map<String, dynamic>?> getDocumentById(String collection, String docId) {
+    return _firestoreService.getDocumentById(collection, docId);
   }
 }
