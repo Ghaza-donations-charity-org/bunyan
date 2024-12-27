@@ -23,7 +23,9 @@ class UserModel {
     try {
       final userData = await _firebaseFacade.getDocumentById('users', userId);
       if (userData == null) {
-        throw Exception("User data not found for userId: $userId");
+        // User doesn't exist, initialize with 0 points
+        _setPoints(0);
+        await savePoints(); // Save the new user's initial points to Firestore
       } else if (userData.containsKey('points')) {
         _setPoints(userData['points']);
       } else {
