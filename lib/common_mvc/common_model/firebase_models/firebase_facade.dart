@@ -32,10 +32,18 @@ class FirebaseFacade {
   }
 
   // Facade Methods
+  // Authentication Methods
+  User? getCurrentUser() => _authService.currentUser;
 
-  Future<void> signOut() {
-    return _authService.signOut();
+  String getCurrentUserId() {
+    final user = getCurrentUser();
+    if (user == null) {
+      throw Exception("No authenticated user found.");
+    }
+    return user.uid;
   }
+
+  Future<void> signOut() => _authService.signOut();
 
   Future<void> saveDataToFirestore(String collection, Map<String, dynamic> data) {
     return _firestoreService.addData(collection, data);
