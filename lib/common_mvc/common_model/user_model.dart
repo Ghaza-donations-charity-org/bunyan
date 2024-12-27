@@ -35,22 +35,16 @@
 //   }
 // }
 
-
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_auth/firebase_auth.dart';
-
 import 'firebase_models/firebase_facade.dart';
 
 class UserModel {
   final FirebaseFacade _firebaseFacade = FirebaseFacade();
 
   int _points = 0;
-  final String userId;
+  late final String userId;
 
-  UserModel() : userId = FirebaseAuth.instance.currentUser?.uid ?? '' {
-    if (userId.isEmpty) {
-      throw Exception("No authenticated user found.");
-    }
+  UserModel() {
+    userId = _firebaseFacade.getCurrentUserId();
   }
 
   // Getter for points
@@ -64,14 +58,12 @@ class UserModel {
   // Load user points from Firestore
   Future<void> loadPoints() async {
     try {
-      final data = await _firebaseFacade.getDataFromFirestore('users');
-      final userData = data.firstWhere((doc) => doc['userId'] == userId, orElse:() => <String, dynamic>{});
+      final userData = await _firebaseFacade.getDocumentById('users', userId);
       if (userData == null) {
-        throw Exception("User data not found for userId: $userId"); }
-      else if (userData != null && userData.containsKey('points')) {
+        throw Exception("User data not found for userId: $userId");
+      } else if (userData.containsKey('points')) {
         _setPoints(userData['points']);
-      }
-      else {
+      } else {
         throw Exception("Points not found in user data.");
       }
     } catch (e) {
@@ -79,23 +71,11 @@ class UserModel {
     }
   }
 
+  // Save user points to Firestore
   Future<void> savePoints() async {
     try {
-      final collectionRef = FirebaseFirestore.instance.collection('users');
-      final userDoc = collectionRef.doc(userId); // Target document by userId
-
-      // Check if the document exists
-      final docSnapshot = await userDoc.get();
-      if (docSnapshot.exists) {
-        // Update the existing document
-        await userDoc.update({'points': _points});
-      } else {
-        // Create a new document if it doesn't exist
-        await userDoc.set({
-          'userId': userId,
-          'points': _points,
-        });
-      }
+      final userPoints = {'points': _points};
+      await _firebaseFacade.updateDocument('users', userId, userPoints);
     } catch (e) {
       throw Exception("Error saving points: $e");
     }
