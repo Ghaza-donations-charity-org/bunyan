@@ -21,22 +21,22 @@ class FirebaseUserDataProvider implements DataProvider<Map<String, dynamic>> {
 }
 
 
-/*
-sample use case:
-void main() async {
-  final userDataProxy = CachedDataProxy(FirebaseUserDataProvider());
-  final donationsDataProxy = CachedDataProxy(FirebaseDonationsProvider());
 
-  // Fetch user data
-  final userData = await userDataProxy.fetchData();
-  print('User Data: $userData');
 
-  // Fetch donations data
-  final donationsData = await donationsDataProxy.fetchData();
-  print('Donations Data: $donationsData');
-
-  // Clear cache if needed
-  userDataProxy.clearCache();
-  donationsDataProxy.clearCache();
-}
- */
+// void main() async {
+//   final userDataProxy = CachedDataProxy(FirebaseUserDataProvider());
+//   final donationsDataProxy = CachedDataProxy(FirebaseDonationsProvider());
+//
+//   // Fetch user data
+//   final userData = await userDataProxy.fetchData();
+//   print('User Data: $userData');
+//
+//   // Fetch donations data
+//   final donationsData = await donationsDataProxy.fetchData();
+//   print('Donations Data: $donationsData');
+//
+//   // Clear cache if needed
+//   userDataProxy.clearCache();
+//   donationsDataProxy.clearCache();
+// }
+//

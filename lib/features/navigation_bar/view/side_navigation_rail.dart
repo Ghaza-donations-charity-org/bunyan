@@ -30,7 +30,7 @@ class SideNavigationRail extends StatelessWidget {
           ],
           selectedIndex: navigationController.currentIndex,
           onDestinationSelected: (index) {
-            navigationController.updateIndex(index);
+            navigationController.navigateWithAnimation(index);
           },
 
         );

@@ -12,9 +12,9 @@ class GoogleSignInStrategy implements SignInStrategy {
     try{
       final GoogleSignInAccount? account = await _googleSignIn.signIn();
       //ToDo: Implement the logic to save the user data in the local storage
-      return FirebaseAuthResult(true);
+      return FirebaseAuthResult(success: true);
     }catch(e){
-      return FirebaseAuthResult(false, e.toString());
+      return FirebaseAuthResult(success: false, errorMessage: e.toString());
     }
   }
 }
