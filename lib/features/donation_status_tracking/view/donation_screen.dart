@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import '../../../common_mvc/common_model/user_model.dart';
 import '../controller/donation_controller.dart';
@@ -12,11 +13,12 @@ class DonationScreen extends StatefulWidget {
 
 class _DonationScreenState extends State<DonationScreen> {
   late DonationController _controller;
-  UserModel user = UserModel();
+  late final UserModel user;
 
   @override
   void initState() {
     super.initState();
+    user = UserModel();
   // Initialize the UserModel instance.
     _controller = DonationController(user); // Pass the UserModel instance to the DonationController.  }
   }

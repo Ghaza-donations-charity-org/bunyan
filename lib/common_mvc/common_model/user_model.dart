@@ -1,6 +1,16 @@
+import 'firebase_models/firebase_facade.dart';
+
 class UserModel {
-  int _points = 0; // Private field to store points
-  //todo: this checks current user and manipulates his field (points) instead
+  final FirebaseFacade _firebaseFacade = FirebaseFacade();
+
+  int _points = 0;
+  late final String userId;
+
+  UserModel() {
+    userId = _firebaseFacade.getCurrentUserId();
+    print(userId);
+  }
+
   // Getter for points
   int get points => _points;
 
@@ -9,27 +19,59 @@ class UserModel {
     _points = points;
   }
 
-  // Example logic to check if the verifier is valid
+  // Load user points from Firestore
+  Future<void> loadPoints() async {
+    try {
+      final userData = await _firebaseFacade.getDocumentById('users', userId);
+      if (userData == null) {
+        // User doesn't exist, initialize with 0 points
+        _setPoints(0);
+        await savePoints(); // Save the new user's initial points to Firestore
+      } else if (userData.containsKey('points')) {
+        _setPoints(userData['points']);
+      } else {
+        throw Exception("Points not found in user data.");
+      }
+    } catch (e) {
+      throw Exception("Error loading points: $e");
+    }
+  }
+
+  // Save user points to Firestore
+  Future<void> savePoints() async {
+    try {
+      final userPoints = {'points': _points};
+      await _firebaseFacade.updateDocument('users', userId, userPoints);
+    } catch (e) {
+      throw Exception("Error saving points: $e");
+    }
+  }
+
+
+  // Check if the verifier is valid
   bool _isAdmin(String verifier) {
-//TODO: This could be a part of the protection proxy? like this can call a function men henak to check for credentials or validity.
+    //TODO: This could be a part of the protection proxy? like this can call a function men henak to check for credentials or validity.
     return verifier == "admin_token";
   }
-  // Method to manipulate points, restricted by a verifier
-  void manipulatePoints(int amount, String verifier) {
+
+  // Manipulate points with authorization
+  Future<void> manipulatePoints(int amount, String verifier) async {
     if (_isAdmin(verifier)) {
       _setPoints(_points + amount);
+      await savePoints(); // Save updated points to Firestore
     } else {
       throw Exception("Unauthorized access to manipulate points.");
     }
   }
 
-  // Method for automatic updates, restricted by an authorization key
-  void autoUpdatePoints(int amount, String triggerKey) {
-    // Replace "autoTriggerKey" with your actual authorization key for external logic
+  // Automatic update points with a trigger key
+  Future<void> autoUpdatePoints(int amount, String triggerKey) async {
     if (triggerKey == "autoTriggerKey") {
       _setPoints(_points + amount);
+      await savePoints(); // Save updated points to Firestore
     } else {
       throw Exception("Unauthorized access to auto-update points.");
     }
   }
 }
+
