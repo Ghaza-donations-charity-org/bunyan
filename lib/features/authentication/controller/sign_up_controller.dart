@@ -12,11 +12,18 @@ class SignUpController {
   SignUpController({required this.context});
 
 
-  (bool isValid, String? errorMessage) validateSignInData({required String email, required
+  (bool isValid, String? errorMessage) validateSignUpData({required String email, required
   String password}) {
     print('validating email: $email, password: $password');
+    //prevent registering as admin
+    if (email.toLowerCase().contains('admin')){
+      throw AuthValidationException('You are not allowed to register as admin').message;
+    }
+
     String? emailValidationResult =
     AuthInputValidator.validateEmailAndReturnErrorMessage(email);
+
+
     String? passwordValidationResult =
     AuthInputValidator.validateNewPasswordAndReturnErrorMessage(password);
     if (emailValidationResult != null || passwordValidationResult != null) {
