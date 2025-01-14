@@ -1,3 +1,4 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'common_mvc/common_controller/user_controller.dart';
@@ -6,11 +7,13 @@ import 'common_mvc/common_model/user_model.dart';
 import 'common_mvc/common_view/theme/app_theme.dart';
 import 'features/authentication/view/widget/auth_wrapper.dart';
 import 'features/navigation_bar/controller/navigation_controller.dart';
+import 'firebase_options.dart';
 
-void main()  {
+void main()  async {
    WidgetsFlutterBinding.ensureInitialized();
-   FirebaseService().initializeFirebase();
-   runApp(const MyApp());
+   await Firebase.initializeApp(
+     options: DefaultFirebaseOptions.currentPlatform,
+   );   runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
