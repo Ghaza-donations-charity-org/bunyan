@@ -4,6 +4,7 @@ class DonationGoal {
   final double targetAmount;
   final double currentAmount;
   final String unit;
+  final String? imageUrl;
 
   DonationGoal({
     this.id,
@@ -11,6 +12,7 @@ class DonationGoal {
     required this.targetAmount,
     required this.currentAmount,
     required this.unit,
+    this.imageUrl,
   });
 
   double getProgressPercentage() {
@@ -32,6 +34,7 @@ class DonationGoal {
       targetAmount: map['targetAmount'],
       currentAmount: map['currentAmount'],
       unit: map['unit'],
+      imageUrl: map['imageUrl'],
     );
   }
 
@@ -42,6 +45,7 @@ class DonationGoal {
       'targetAmount': targetAmount,
       'currentAmount': currentAmount,
       'unit': unit,
+      'imageUrl': imageUrl,
     };
   }
 
