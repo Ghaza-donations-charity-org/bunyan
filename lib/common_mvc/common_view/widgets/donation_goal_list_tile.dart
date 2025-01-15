@@ -7,8 +7,10 @@ import '../theme/app_colors.dart';
 class DonationGoalListTile extends StatefulWidget {
   final DonationGoal donationGoal;
   final Function(bool selected) onSaveButtonPressed;
-  const DonationGoalListTile({super.key, required this.donationGoal,
-    required this.onSaveButtonPressed});
+  const DonationGoalListTile(
+      {super.key,
+      required this.donationGoal,
+      required this.onSaveButtonPressed});
 
   @override
   State<DonationGoalListTile> createState() => _DonationGoalListTileState();
@@ -32,13 +34,13 @@ class _DonationGoalListTileState extends State<DonationGoalListTile> {
           // Navigator.pushNamed(context, '/donationGoalDetails', arguments: donationGoal);
         },
         child: Container(
-          height: 300,
+          height: 175,
           width: 300,
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(20),
             color: AppColors.cardColor,
           ),
-          child: Column(
+          child: Row(
             children: [
               Stack(
                 children: [
@@ -50,25 +52,29 @@ class _DonationGoalListTileState extends State<DonationGoalListTile> {
                   ),
                 ],
               ),
-              Container(
-                padding: const EdgeInsets.all(5),
-                width: 300,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(20),
-                ),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    const SizedBox(height: 10),
-                    title(),
-                    const SizedBox(height: 10),
-                    progress(),
-                    const SizedBox(height: 5),
-                    progressBar(),
-                    const SizedBox(height: 10),
-                    description(),
-                    const SizedBox(height: 10),
-                  ],
+              Expanded(
+                child: Container(
+                  padding: const EdgeInsets.all(5),
+                  width: 100,
+                  height: 300,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(20),
+                  ),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      const SizedBox(height: 10),
+                      title(),
+                       const SizedBox(height: 10),
+                      // progress(),
+                      //const SizedBox(height: 5),
+                      progressBar(),
+                      const SizedBox(height: 10),
+                      description(),
+                      const SizedBox(height: 10),
+                    ],
+                  ),
                 ),
               ),
             ],
@@ -94,13 +100,13 @@ class _DonationGoalListTileState extends State<DonationGoalListTile> {
         },
         icon: saved
             ? const Icon(
-          Icons.bookmark,
-          color: Colors.amber,
-        )
+                Icons.bookmark,
+                color: Colors.amber,
+              )
             : const Icon(
-          Icons.bookmark_border_outlined,
-          color: Colors.white,
-        ),
+                Icons.bookmark_border_outlined,
+                color: Colors.white,
+              ),
       ),
     );
   }
@@ -110,12 +116,11 @@ class _DonationGoalListTileState extends State<DonationGoalListTile> {
 
   Widget image() {
     return Container(
-      height: 140,
-      width: double.infinity,
+      width: 125,
       decoration: BoxDecoration(
         borderRadius: const BorderRadius.only(
           topLeft: Radius.circular(20),
-          topRight: Radius.circular(20),
+          bottomLeft: Radius.circular(20),
         ),
         image: DecorationImage(
             image: ImageUtilityFunctions.getImage(widget.donationGoal.imageUrl),
