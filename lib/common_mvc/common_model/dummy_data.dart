@@ -17,7 +17,7 @@ DonationGoal dummyDonationGoal2 = DonationGoal(
   description:
       'We are trying to build a hospital in a remote area in the middle of the desert, where people have to walk for hours to reach the nearest hospital. We need your help to make this dream come true.',
   targetAmount: 100000,
-  currentAmount: 50000,
+  currentAmount: 20000,
   imageUrl: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR-m_9mpomTObnXPylNrF9XbCENdQu-4lWLpw&s', unit: 'USD',
 );
 

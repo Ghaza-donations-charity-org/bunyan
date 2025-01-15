@@ -10,29 +10,28 @@ class AppTheme {
     colorScheme: ColorScheme.fromSeed(seedColor: AppColors.primaryColor),
     scaffoldBackgroundColor: AppColors.scaffoldBackgroundColor,
     primaryColor: AppColors.primaryColor,
-
-
-textButtonTheme: TextButtonThemeData(
+    appBarTheme: AppBarTheme(
+      backgroundColor: AppColors.scaffoldBackgroundColor,
+      titleTextStyle: AppTextTheme.appTextTheme.bodyLarge!
+          .copyWith(color: AppColors.white, fontWeight: FontWeight.bold),
+    ),
+    textButtonTheme: TextButtonThemeData(
       style: ButtonStyle(
         foregroundColor: WidgetStateProperty.all(AppColors.white),
       ),
     ),
-
     textTheme: AppTextTheme.appTextTheme,
-
-
     navigationRailTheme: NavigationRailThemeData(
       backgroundColor: AppColors.white,
-      selectedLabelTextStyle: AppTextTheme.appTextTheme.bodyLarge!.copyWith(color: Colors.blue.shade700),
-      unselectedLabelTextStyle: AppTextTheme.appTextTheme.bodyLarge!.copyWith(color: Colors.black),
+      selectedLabelTextStyle: AppTextTheme.appTextTheme.bodyLarge!
+          .copyWith(color: Colors.blue.shade700),
+      unselectedLabelTextStyle:
+          AppTextTheme.appTextTheme.bodyLarge!.copyWith(color: Colors.black),
     ),
-
     bottomNavigationBarTheme: BottomNavigationBarThemeData(
       backgroundColor: AppColors.primaryColor,
       selectedItemColor: Colors.blue.shade700,
       unselectedItemColor: Colors.black,
     ),
-
-
   );
 }

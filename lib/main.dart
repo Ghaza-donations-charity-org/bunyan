@@ -24,7 +24,10 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return
-      const MaterialApp(home: DummyScreenForTesting(),);
+      MaterialApp(
+        debugShowCheckedModeBanner: false,
+        theme: AppTheme.darkTheme,
+        home: const DummyScreenForTesting(),);
 
       MultiProvider(
       providers: [

@@ -14,7 +14,6 @@ class _DummyScreenForTestingState extends State<DummyScreenForTesting> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppColors.scaffoldBackgroundColor,
       appBar: AppBar(
         title: const Center(
           child: Text('Dummy Screen For Testing'),

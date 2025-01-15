@@ -130,7 +130,7 @@ class _DonationGoalCardState extends State<DonationGoalCard> {
 
   Widget title() {
     return Padding(
-      padding: const EdgeInsets.only(left: 20),
+      padding: const EdgeInsets.symmetric(horizontal: 20),
       child: Text(
         widget.donationGoal.title,
         style: const TextStyle(
@@ -146,7 +146,7 @@ class _DonationGoalCardState extends State<DonationGoalCard> {
   //=========================== Description ===============================//
   Widget description() {
     return Padding(
-      padding: const EdgeInsets.only(left: 20),
+      padding: const EdgeInsets.symmetric(horizontal: 20),
       child: Text(
         widget.donationGoal.description,
         overflow: TextOverflow.ellipsis,
@@ -163,7 +163,7 @@ class _DonationGoalCardState extends State<DonationGoalCard> {
   //=========================== Progress ===============================//
   Widget progress() {
     return Padding(
-      padding: const EdgeInsets.only(left: 20),
+      padding: const EdgeInsets.symmetric(horizontal: 20),
       child: Text(
         "collected: ${widget.donationGoal.getProgress()}",
         style: const TextStyle(
@@ -178,7 +178,7 @@ class _DonationGoalCardState extends State<DonationGoalCard> {
   //=========================== Progress Bar ===============================//
   Widget progressBar() {
     return Padding(
-      padding: const EdgeInsets.only(left: 20),
+      padding: const EdgeInsets.symmetric(horizontal: 20),
       child: Stack(
         children: [
           Container(
