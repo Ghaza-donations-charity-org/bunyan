@@ -15,24 +15,37 @@ class SideNavigationRail extends StatelessWidget {
   Widget build(BuildContext context) {
     return Consumer<NavigationController>(
       builder: (context, navigationController, child) {
-        return NavigationRail(
-          leading: const Align(
-            alignment: Alignment.topLeft,
-            child: Padding(padding: EdgeInsets.all(10),child: AppLogo(),),
-          ),
-          extended: ScreenUtilityFunctions().isVeryWideScreen(context) ,
-          destinations: [
-            ...listOfNavigationBarItems.map((item) => NavigationRailDestination(
-              padding: const EdgeInsets.symmetric(vertical: 10),
-              icon: Icon(item.icon),
-              label: Text(item.title,),
-            )),
+        return Row(
+          children: [
+            NavigationRail(
+              leading: const Align(
+                alignment: Alignment.topLeft,
+                child: Padding(
+                  padding: EdgeInsets.all(10),
+                  child: AppLogo(),
+                ),
+              ),
+              extended: ScreenUtilityFunctions().isVeryWideScreen(context),
+              destinations: [
+                ...listOfNavigationBarItems
+                    .map((item) => NavigationRailDestination(
+                          padding: const EdgeInsets.symmetric(vertical: 10),
+                          icon: Icon(item.icon),
+                          label: Text(
+                            item.title,
+                          ),
+                        )),
+              ],
+              selectedIndex: navigationController.currentIndex,
+              onDestinationSelected: (index) {
+                navigationController.navigateWithAnimation(index);
+              },
+            ),
+            VerticalDivider(
+              thickness: 0.5,
+              color: AppColors.white.withOpacity(0.2),
+            ),
           ],
-          selectedIndex: navigationController.currentIndex,
-          onDestinationSelected: (index) {
-            navigationController.navigateWithAnimation(index);
-          },
-
         );
       },
     );
