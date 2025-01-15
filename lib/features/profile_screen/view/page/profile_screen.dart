@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:ghaza_donations_app/common_mvc/common_view/widgets/list_tile_widget.dart';
+import 'package:ghaza_donations_app/features/authentication/model/firebase_auth_singleton.dart';
 import 'package:ghaza_donations_app/features/profile_screen/view/page/saved_donation_goals_screen.dart';
 import 'package:provider/provider.dart';
 import '../../../../common_mvc/common_controller/user_controller.dart';
@@ -19,6 +20,9 @@ class ProfileScreen extends StatelessWidget {
             const SizedBox(height: 20),
 
             savedDonationGoalsTile(context),
+            const SizedBox(height: 20),
+
+            logoutButton(context),
           ],
         )
       ),
@@ -67,6 +71,15 @@ class ProfileScreen extends StatelessWidget {
         );
       },
     );
+  }
 
+  Widget logoutButton(BuildContext context) {
+    return ListTileWidget(
+      title: 'Logout',
+      leading: const Icon(Icons.logout),
+      onTap: () {
+        FirebaseAuthServices().signOut();
+      },
+    );
   }
 }
