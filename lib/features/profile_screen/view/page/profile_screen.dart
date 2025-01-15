@@ -13,22 +13,19 @@ class ProfileScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(title: const Text('User Points')),
       body: Center(
-        child: Column(
-          children: [
-            points(),
-
-            const SizedBox(height: 20),
-
-            savedDonationGoalsTile(context),
-            const SizedBox(height: 20),
-
-            logoutButton(context),
-          ],
-        )
-      ),
+          child: Column(
+        children: [
+          points(),
+          const SizedBox(height: 20),
+          savedDonationGoalsTile(context),
+          const SizedBox(height: 20),
+          logoutButton(context),
+          const SizedBox(height: 20),
+          deleteAccountButton(context),
+        ],
+      )),
     );
   }
-
 
   Widget points() {
     return Consumer<UserControllerProvider>(
@@ -60,8 +57,10 @@ class ProfileScreen extends StatelessWidget {
 
   Widget savedDonationGoalsTile(BuildContext context) {
     return ListTileWidget(
-      title:'Saved Donation Goals',
-      leading: const Icon(Icons.bookmark_outlined, ),
+      title: 'Saved Donation Goals',
+      leading: const Icon(
+        Icons.bookmark_outlined,
+      ),
       onTap: () {
         Navigator.push(
           context,
@@ -79,6 +78,40 @@ class ProfileScreen extends StatelessWidget {
       leading: const Icon(Icons.logout),
       onTap: () {
         FirebaseAuthServices().signOut();
+      },
+    );
+  }
+
+  Widget deleteAccountButton(BuildContext context) {
+    return ListTileWidget(
+      title: 'Delete Account',
+      leading: const Icon(Icons.delete),
+      onTap: () {
+        showDialog(
+            context: context,
+            builder: (context) => AlertDialog(
+                  title: const Text('Delete Account'),
+                  content: const Text(
+                      'Are you sure you want to delete your account?'),
+                  actions: [
+                    TextButton(
+                      child: const Text('Cancel'),
+                      onPressed: () {
+                        Navigator.of(context).pop();
+                      },
+                    ),
+                    TextButton(
+                      child: const Text('Delete'),
+                      onPressed: () {
+                        Navigator.of(context).pop(true);
+                      },
+                    ),
+                  ],
+                )).then((value) {
+          if (value == true) {
+            FirebaseAuthServices().deleteAccount();
+          }
+        });
       },
     );
   }
