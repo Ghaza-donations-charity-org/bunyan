@@ -55,7 +55,7 @@ class AppTheme {
       backgroundColor: AppColors.scaffoldBackgroundColor,
 
       selectedLabelTextStyle: AppTextTheme.appTextTheme.bodyLarge!
-          .copyWith(color: Colors.blue.shade700),
+          .copyWith(color: Colors.white),
       unselectedLabelTextStyle:
       AppTextTheme.appTextTheme.bodyLarge!.copyWith(color: Colors.grey),
       selectedIconTheme: const IconThemeData(color: Colors.white),
