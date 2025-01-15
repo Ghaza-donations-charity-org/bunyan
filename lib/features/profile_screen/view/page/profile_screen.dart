@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:ghaza_donations_app/features/profile_screen/view/page/saved_donation_goals_screen.dart';
 import 'package:provider/provider.dart';
 import '../../../../common_mvc/common_controller/user_controller.dart';
 
@@ -8,34 +9,60 @@ class ProfileScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('User Points')),
+      appBar: AppBar(title: const Text('User Points')),
       body: Center(
-        child: Consumer<UserControllerProvider>(
-          builder: (context, userController, child) {
-            return Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Text(
-                  'Your Points:',
-                  style: TextStyle(fontSize: 24),
-                ),
-                SizedBox(height: 10),
-                Text(
-                  '${userController.points}', // Access points from the controller
-                  style: TextStyle(fontSize: 32, fontWeight: FontWeight.bold),
-                ),
-                SizedBox(height: 20),
-                ElevatedButton(
-                  onPressed: () {
-                    userController.loadUserPoints(); // Load or refresh points
-                  },
-                  child: Text('Refresh Points'),
-                ),
-              ],
-            );
-          },
-        ),
+        child: Column(
+          children: [
+            points(),
+
+            savedDonationGoalsTile(context),
+          ],
+        )
       ),
     );
+  }
+
+
+  Widget points() {
+    return Consumer<UserControllerProvider>(
+      builder: (context, userController, child) {
+        return Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            const Text(
+              'Your Points:',
+              style: TextStyle(fontSize: 24),
+            ),
+            const SizedBox(height: 10),
+            Text(
+              '${userController.points}', // Access points from the controller
+              style: const TextStyle(fontSize: 32, fontWeight: FontWeight.bold),
+            ),
+            const SizedBox(height: 20),
+            ElevatedButton(
+              onPressed: () {
+                userController.loadUserPoints(); // Load or refresh points
+              },
+              child: const Text('Refresh Points'),
+            ),
+          ],
+        );
+      },
+    );
+  }
+
+  Widget savedDonationGoalsTile(BuildContext context) {
+    return ListTile(
+      title: const Text('Saved Donation Goals'),
+      onTap: () {
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => const SavedDonationGoalsScreen(),
+          ),
+        );
+      },
+    );
+
   }
 }

@@ -18,8 +18,11 @@ class HomeScreen extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.end,
             children: [
               const SizedBox(height: 40),
-
-              Text("Donation Goals", style: Theme.of(context).textTheme.titleMedium!.copyWith(color: Colors.white)),
+              Text("Donation Goals",
+                  style: Theme.of(context)
+                      .textTheme
+                      .titleMedium!
+                      .copyWith(color: Colors.white)),
               const SizedBox(height: 20),
               SingleChildScrollView(
                 scrollDirection: Axis.horizontal,
