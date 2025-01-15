@@ -26,50 +26,54 @@ class _DonationGoalCardState extends State<DonationGoalCard> {
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: () {
-        // Navigator.pushNamed(context, '/donationGoalDetails', arguments: donationGoal);
-      },
-      child: Container(
-        height: 300,
-        width: 400,
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(20),
-          color: AppColors.cardColor,
-        ),
-        child: Column(
-          children: [
-            Stack(
-              children: [
-                image(),
-                Positioned(
-                  right: 10,
-                  top: 10,
-                  child: saveButton(),
-                ),
-              ],
-            ),
-            Container(
-              width: 400,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(20),
-              ),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
+    return Padding(
+      padding: const EdgeInsets.all(10),
+      child: GestureDetector(
+        onTap: () {
+          // Navigator.pushNamed(context, '/donationGoalDetails', arguments: donationGoal);
+        },
+        child: Container(
+          height: 300,
+          width: 300,
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(20),
+            color: AppColors.cardColor,
+          ),
+          child: Column(
+            children: [
+              Stack(
                 children: [
-                  const SizedBox(height: 10),
-                  title(),
-                  const SizedBox(height: 10),
-                  progress(),
-                  const SizedBox(height: 5),
-                  progressBar(),
-                  const SizedBox(height: 10),
-                  description(),
-                  const SizedBox(height: 10),
+                  image(),
+                  Positioned(
+                    right: 10,
+                    top: 10,
+                    child: saveButton(),
+                  ),
                 ],
               ),
-            ),
-          ],
+              Container(
+                padding: const EdgeInsets.all(5),
+                width: 300,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(20),
+                ),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    const SizedBox(height: 10),
+                    title(),
+                    const SizedBox(height: 10),
+                    progress(),
+                    const SizedBox(height: 5),
+                    progressBar(),
+                    const SizedBox(height: 10),
+                    description(),
+                    const SizedBox(height: 10),
+                  ],
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );
@@ -178,16 +182,16 @@ class _DonationGoalCardState extends State<DonationGoalCard> {
       child: Stack(
         children: [
           Container(
-            height: 10,
-            width: 300,
+            height: 7,
+            width: 250,
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(10),
               color: AppColors.grey,
             ),
           ),
           Container(
-            height: 10,
-            width: 300 * widget.donationGoal.getProgressPercentage(),
+            height: 7,
+            width: 250 * widget.donationGoal.getProgressPercentage(),
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(10),
               color: AppColors.accentColor,

@@ -23,7 +23,7 @@ class DonationGoal {
   }
 
   String getProgress() {
-    return "$currentAmount / $targetAmount $unit";
+    return "${currentAmount.toInt()} / ${targetAmount.toInt()} $unit";
   }
 
   String getProgressPercentageAsString() {
