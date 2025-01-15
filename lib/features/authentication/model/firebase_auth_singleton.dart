@@ -37,6 +37,9 @@ class FirebaseAuthServices {
     await _firebaseAuth.signOut();
   }
 
+  Future<void> deleteAccount() async {
+    await _firebaseAuth.currentUser!.delete();
+  }
 
   static String mapFirebaseAuthExceptionToMessage(FirebaseAuthException e) {
     switch (e.code) {
