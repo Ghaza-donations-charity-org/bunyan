@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class SettingsScreen extends StatelessWidget {
-  const SettingsScreen({super.key});
+class EventsScreen extends StatelessWidget {
+  const EventsScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
