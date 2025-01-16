@@ -20,6 +20,7 @@ void main() async {
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
+  static GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
 
   @override
   Widget build(BuildContext context) {
@@ -41,6 +42,7 @@ class MyApp extends StatelessWidget {
         title: 'Bunyan',
         theme: AppTheme.darkTheme,
         home: AuthWrapper(),
+        navigatorKey: navigatorKey,
       ),
     );
   }

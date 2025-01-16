@@ -1,5 +1,7 @@
 import 'package:awesome_notifications/awesome_notifications.dart';
+import 'package:flutter/material.dart';
 import 'package:ghaza_donations_app/common_mvc/common_view/theme/app_colors.dart';
+import 'package:ghaza_donations_app/main.dart';
 
 class NotificationService {
   static Future<void> initializeNotification() async {
@@ -62,5 +64,56 @@ class NotificationService {
       ReceivedNotification receivedNotification) async {
     print(
         "Notification action clicked and this happens : ${receivedNotification.title}");
+    final payload = receivedNotification.payload ?? {};
+    if (payload["navigate"] == "true") {
+      MyApp.navigatorKey.currentState?.push(
+        MaterialPageRoute(
+          builder: (_) => Container(),
+        )
+      );
+    }
   }
+  static Future<void> showNotification({
+    required final String title,
+    required final String body,
+    final String? summary,
+    final Map<String, String>? payload,
+    final ActionType actionType = ActionType.Default,
+    final NotificationLayout notificationLayout = NotificationLayout.Default,
+    final NotificationCategory? category,
+    final String? bigPicture,
+    final List<NotificationActionButton>? actionButtons,
+    final bool scheduled = false,
+    final int? interval,
+  }) async {
+    assert(!scheduled || (scheduled && interval != null),
+    'If scheduled is true, interval must not be null.');
+
+    await AwesomeNotifications().createNotification(
+      content: NotificationContent(
+        id: createUniqueId(),
+        channelKey: 'basic_channel', // Update with your channel key
+        title: title,
+        body: body,
+        summary: summary,
+        bigPicture: bigPicture,
+        notificationLayout: notificationLayout,
+        category: category,
+        payload: payload,
+      ),
+      actionButtons: actionButtons,
+      schedule: scheduled
+          ? NotificationInterval(
+        interval: Duration(seconds: interval!),
+        timeZone: await AwesomeNotifications().getLocalTimeZoneIdentifier(),
+        preciseAlarm: true,
+      )
+          : null,
+    );
+  }
+
+  static int createUniqueId() {
+    return DateTime.now().millisecondsSinceEpoch.remainder(100000);
+  }
+
 }
