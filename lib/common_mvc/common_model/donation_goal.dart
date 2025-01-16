@@ -1,3 +1,5 @@
+import 'firebase_models/firebase_facade.dart';
+
 class DonationGoal {
   final String? id;
   final String title;
@@ -53,5 +55,34 @@ class DonationGoal {
       'imageUrl': imageUrl,
     };
   }
+  // CRUD Operations
+  static Future<void> addDonationGoal(DonationGoal goal) async {
+    final facade = FirebaseFacade();
+    await facade.saveDataToFirestore('donationGoals', goal.toMap());
+  }
 
+  static Future<List<DonationGoal>> getAllDonationGoals() async {
+    final facade = FirebaseFacade();
+    final data = await facade.getDataFromFirestore('donationGoals');
+    return data.map((doc) => DonationGoal.fromMap(doc)).toList();
+  }
+
+  static Future<void> updateDonationGoal(DonationGoal goal) async {
+    final facade = FirebaseFacade();
+    if (goal.id == null) {
+      throw ArgumentError("No DonationGoal exists with this ID");
+    }
+    await facade.updateDocumentInFirestore('donationGoals', goal.id!, goal.toMap());
+  }
+
+  static Future<void> deleteDonationGoal(String id) async {
+    final facade = FirebaseFacade();
+    await facade.deleteDocumentFromFirestore('donationGoals', id);
+  }
+
+  static Future<DonationGoal?> getDonationGoalById(String id) async {
+    final facade = FirebaseFacade();
+    final data = await facade.getDocumentByIdFromFirestore('donationGoals', id);
+    return data != null ? DonationGoal.fromMap(data) : null;
+  }
 }

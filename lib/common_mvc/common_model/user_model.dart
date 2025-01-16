@@ -22,7 +22,7 @@ class UserModel {
   // Load user points from Firestore
   Future<void> loadPoints() async {
     try {
-      final userData = await _firebaseFacade.getDocumentById('users', userId);
+      final userData = await _firebaseFacade.getDocumentByIdFromFirestore('users', userId);
       if (userData == null) {
         // User doesn't exist, initialize with 0 points
         _setPoints(0);
@@ -41,7 +41,7 @@ class UserModel {
   Future<void> savePoints() async {
     try {
       final userPoints = {'points': _points};
-      await _firebaseFacade.updateDocument('users', userId, userPoints);
+      await _firebaseFacade.updateDocumentInFirestore('users', userId, userPoints);
     } catch (e) {
       throw Exception("Error saving points: $e");
     }

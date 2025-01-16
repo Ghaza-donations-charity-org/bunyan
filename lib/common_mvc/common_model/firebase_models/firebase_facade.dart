@@ -54,12 +54,16 @@ class FirebaseFacade {
     return _firestoreService.getData(collection);
   }
 
-  Future<void> updateDocument(
+  Future<void> updateDocumentInFirestore(
       String collection, String docId, Map<String, dynamic> data) {
     return _firestoreService.updateDocument(collection, docId, data);
   }
 
-  Future<Map<String, dynamic>?> getDocumentById(String collection, String docId) {
+  Future<Map<String, dynamic>?> getDocumentByIdFromFirestore(String collection, String docId) {
     return _firestoreService.getDocumentById(collection, docId);
+  }
+
+  Future<void> deleteDocumentFromFirestore(String collection, String docId) {
+    return _firestoreService.deleteDocument(collection, docId);
   }
 }
