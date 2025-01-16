@@ -20,4 +20,8 @@ class FireStoreServices {
     final docSnapshot = await _firestore.collection(collection).doc(docId).get();
     return docSnapshot.exists ? docSnapshot.data() : null;
   }
+
+  Future<void> deleteDocument(String collection, String docId) async {
+    await _firestore.collection(collection).doc(docId).delete();
+  }
 }
