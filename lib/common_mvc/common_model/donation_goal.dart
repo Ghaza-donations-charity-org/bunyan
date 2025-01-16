@@ -60,18 +60,22 @@ class DonationGoal {
     final facade = FirebaseFacade();
     await facade.saveDataToFirestore('donationGoals', goal.toMap());
   }
+
   static Future<List<DonationGoal>> getAllDonationGoals() async {
     final facade = FirebaseFacade();
     final data = await facade.getDataFromFirestore('donationGoals');
     return data.map((doc) => DonationGoal.fromMap(doc)).toList();
   }
 
-  static Future<void> updateDonationGoal(String id, Map<String, dynamic> updatedData) async {
+  static Future<void> updateDonationGoal(DonationGoal goal) async {
     final facade = FirebaseFacade();
-    await facade.updateDocumentInFirestore('donationGoals', id, updatedData);
+    if (goal.id == null) {
+      throw ArgumentError("No DonationGoal exists with this ID");
+    }
+    await facade.updateDocumentInFirestore('donationGoals', goal.id!, goal.toMap());
   }
 
-  static Future<void> deletedDonationGoal(String id) async {
+  static Future<void> deleteDonationGoal(String id) async {
     final facade = FirebaseFacade();
     await facade.deleteDocumentFromFirestore('donationGoals', id);
   }
