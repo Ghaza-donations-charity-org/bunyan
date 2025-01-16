@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:ghaza_donations_app/common_mvc/common_view/theme/app_colors.dart';
 import '../../model/event.dart';
 
 class EventCard extends StatelessWidget {
@@ -17,13 +18,18 @@ class EventCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Card(
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
-      margin: const EdgeInsets.all(8),
+      margin: const EdgeInsets.symmetric(vertical: 10, horizontal: 5),
+      color: AppColors.navyBlue.withOpacity(0.7),
       elevation: 5,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          ClipRRect(
-            borderRadius: const BorderRadius.vertical(top: Radius.circular(12)),
+          Card(
+            color: AppColors.white.withOpacity(0.7), // Set the background color here
+            shape:
+                RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+            margin: const EdgeInsets.symmetric(vertical: 10, horizontal: 5),
+            elevation: 5,
             child: Image.network(
               event.imageUrl,
               height: 150,
@@ -38,14 +44,11 @@ class EventCard extends StatelessWidget {
               children: [
                 Text(
                   event.title,
-                  style: Theme.of(context).textTheme.titleLarge,
                   maxLines: 1,
-                  overflow: TextOverflow.ellipsis,
                 ),
                 const SizedBox(height: 8),
                 Text(
                   event.description,
-                  style: Theme.of(context).textTheme.bodyMedium,
                   maxLines: 2,
                   overflow: TextOverflow.ellipsis,
                 ),

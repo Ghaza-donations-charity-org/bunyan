@@ -6,7 +6,7 @@ final List<Event> dummyEvents = [
     id: 'e1',
     title: 'Charity Walk',
     description: 'Join us for a charity walk to support children in need.',
-    imageUrl: 'https://via.placeholder.com/150',
+    imageUrl: 'https://letsenhance.io/static/8f5e523ee6b2479e26ecc91b9c25261e/1015f/MainAfter.jpg',
   ),
   Event(
     id: 'e2',
