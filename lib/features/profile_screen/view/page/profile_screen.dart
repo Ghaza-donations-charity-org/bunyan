@@ -16,7 +16,7 @@ class ProfileScreen extends StatelessWidget {
       body: Center(
           child: Column(
         children: [
-          ProfileDataWidget(),
+          const ProfileDataWidget(),
           const SizedBox(height: 20),
           savedDonationGoalsTile(context),
           const SizedBox(height: 20),
