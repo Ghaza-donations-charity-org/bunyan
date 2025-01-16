@@ -1,5 +1,6 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:ghaza_donations_app/features/notifications/controller/notifications_service.dart';
 import 'package:provider/provider.dart';
 import 'common_mvc/common_controller/user_controller.dart';
 import 'common_mvc/common_model/firebase_models/firebase_services_singleton.dart';
@@ -12,6 +13,7 @@ import 'firebase_options.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  await NotificationService.initializeNotification();
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
@@ -20,6 +22,7 @@ void main() async {
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
+  static GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
 
   @override
   Widget build(BuildContext context) {
@@ -41,6 +44,7 @@ class MyApp extends StatelessWidget {
         title: 'Bunyan',
         theme: AppTheme.darkTheme,
         home: AuthWrapper(),
+        navigatorKey: navigatorKey,
       ),
     );
   }

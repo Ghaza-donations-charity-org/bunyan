@@ -1,4 +1,7 @@
+import 'package:awesome_notifications/awesome_notifications.dart';
 import 'package:flutter/material.dart';
+import 'package:ghaza_donations_app/features/notifications/controller/notifications_service.dart';
+import 'package:ghaza_donations_app/features/notifications/view/widget/notification_button.dart';
 
 import '../../../../common_mvc/common_model/dummy_data.dart';
 import '../../../../common_mvc/common_view/widgets/donation_goal_card.dart';
@@ -35,6 +38,14 @@ class HomeScreen extends StatelessWidget {
                   ],
                 ),
               ),
+              NotificationButton(
+                  onPressed: () async {
+                    await NotificationService.showNotification(
+                        title: "title",
+                        body: "body",
+                        notificationLayout: NotificationLayout.Default);
+                  },
+                  text: "text")
             ],
           ),
         ),
