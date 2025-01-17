@@ -134,11 +134,11 @@ class _TextFieldWidgetState extends State<TextFieldWidget> {
                   .textTheme.bodyMedium!.copyWith(
                 color: widget.textColor ?? AppColors.white,
               ),
-          filled: widget.filled ?? true,
+          filled: widget.filled ?? false,
           fillColor: widget.fillColor ?? AppColors.navyBlue,
           border: OutlineInputBorder(
             borderSide: BorderSide(
-                color: widget.borderColor ?? AppColors.lightGrey, width: 0),
+                color: widget.borderColor ?? AppColors.white, width: 1),
             borderRadius: BorderRadius.all(
               Radius.circular(widget.borderRadius ?? 12),
             ),
@@ -154,7 +154,7 @@ class _TextFieldWidgetState extends State<TextFieldWidget> {
               ),
           enabledBorder: OutlineInputBorder(
             borderSide: BorderSide(
-                color: widget.borderColor ?? AppColors.primaryColor, width: 0),
+                color: widget.borderColor ?? AppColors.grey, width: 1),
             borderRadius: BorderRadius.all(
               Radius.circular(widget.borderRadius ?? 12),
             ),

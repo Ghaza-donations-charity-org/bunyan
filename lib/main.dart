@@ -7,6 +7,7 @@ import 'common_mvc/common_model/user_model.dart';
 import 'common_mvc/common_view/theme/app_theme.dart';
 import 'features/authentication/view/widget/auth_wrapper.dart';
 import 'features/dummy_screen_for_testing.dart';
+import 'features/make_donation_screen/controller/donation_controller.dart';
 import 'features/navigation_bar/controller/navigation_controller.dart';
 import 'firebase_options.dart';
 
@@ -24,16 +25,19 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return
-      // MaterialApp(
-      //   debugShowCheckedModeBanner: false,
-      //   theme: AppTheme.darkTheme,
-      //   home: const DummyScreenForTesting(),);
+        // MaterialApp(
+        //   debugShowCheckedModeBanner: false,
+        //   theme: AppTheme.darkTheme,
+        //   home: const DummyScreenForTesting(),);
 
-      MultiProvider(
+        MultiProvider(
       providers: [
         ChangeNotifierProvider(create: (context) => NavigationController()),
         ChangeNotifierProvider(
           create: (context) => UserControllerProvider(user: UserModel()),
+        ),
+        ChangeNotifierProvider(
+          create: (_) => MakeDonationController(),
         ),
       ],
       child: MaterialApp(

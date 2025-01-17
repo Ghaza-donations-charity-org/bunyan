@@ -18,48 +18,50 @@ class DonationGoalDetailsScreen extends StatefulWidget {
 class _DonationGoalDetailsScreenState extends State<DonationGoalDetailsScreen> {
   bool saved = false;
 
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Text(widget.donationGoal.title),
-
         actions: [saveButton()],
       ),
       body: Padding(
-          padding: const EdgeInsets.all(20),
-          child: SingleChildScrollView(
-            scrollDirection: Axis.vertical,
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.start,
-              children:[
-               image(),
-                const SizedBox(height: 20,),
-                title(),
-                const SizedBox(height: 20,),
-
-                description(),
-                const SizedBox(height: 20,),
-
-                progress(),
-                const SizedBox(height: 20,),
-
-                progressBar(),
-
-                const SizedBox(height: 60,),
-
-               makeDonationButton(),
-                const SizedBox(height: 20,),
-
-              ],
-            ),
+        padding: const EdgeInsets.all(20),
+        child: SingleChildScrollView(
+          scrollDirection: Axis.vertical,
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: [
+              image(),
+              const SizedBox(
+                height: 20,
+              ),
+              title(),
+              const SizedBox(
+                height: 20,
+              ),
+              description(),
+              const SizedBox(
+                height: 20,
+              ),
+              progress(),
+              const SizedBox(
+                height: 20,
+              ),
+              progressBar(),
+              const SizedBox(
+                height: 60,
+              ),
+              makeDonationButton(),
+              const SizedBox(
+                height: 20,
+              ),
+            ],
           ),
         ),
-
+      ),
     );
   }
-
 
   //========================================================================//
   //=============================== Save Button =============================//
@@ -76,13 +78,13 @@ class _DonationGoalDetailsScreenState extends State<DonationGoalDetailsScreen> {
         },
         icon: saved
             ? const Icon(
-          Icons.bookmark,
-          color: Colors.amber,
-        )
+                Icons.bookmark,
+                color: Colors.amber,
+              )
             : const Icon(
-          Icons.bookmark_border_outlined,
-          color: Colors.white,
-        ),
+                Icons.bookmark_border_outlined,
+                color: Colors.white,
+              ),
       ),
     );
   }
@@ -95,9 +97,8 @@ class _DonationGoalDetailsScreenState extends State<DonationGoalDetailsScreen> {
       width: double.infinity,
       height: 200,
       decoration: BoxDecoration(
-        borderRadius: const BorderRadius.only(
-          topLeft: Radius.circular(20),
-          bottomLeft: Radius.circular(20),
+        borderRadius: const BorderRadius.all(
+          Radius.circular(20),
         ),
         image: DecorationImage(
             image: ImageUtilityFunctions.getImage(widget.donationGoal.imageUrl),
@@ -183,13 +184,14 @@ class _DonationGoalDetailsScreenState extends State<DonationGoalDetailsScreen> {
     );
   }
 
-  Widget makeDonationButton(){
-    return ButtonWidget(onPressed: (){
-      Navigator.of(context).push(MaterialPageRoute(builder: (context) => MakeDonationScreen(donationGoal: widget.donationGoal)));
-
-    },
+  Widget makeDonationButton() {
+    return ButtonWidget(
+      onPressed: () {
+        Navigator.of(context).push(MaterialPageRoute(
+            builder: (context) =>
+                MakeDonationScreen(donationGoal: widget.donationGoal)));
+      },
       text: 'Make a donation',
-    
     );
   }
 }
