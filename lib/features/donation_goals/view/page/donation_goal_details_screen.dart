@@ -1,84 +1,65 @@
+import 'package:flutter/material.dart';
 import 'package:ghaza_donations_app/common_mvc/common_controller/common_utility_classes/image_utils.dart';
 import 'package:ghaza_donations_app/common_mvc/common_model/donation_goal.dart';
-import 'package:flutter/material.dart';
+import 'package:ghaza_donations_app/common_mvc/common_view/widgets/buttons/button_widget.dart';
 
-import '../../../features/donation_goals/view/page/donation_goal_details_screen.dart';
-import '../theme/app_colors.dart';
+import '../../../../common_mvc/common_view/theme/app_colors.dart';
+import '../../../make_donation_screen/view/page/make_donation_screen.dart';
 
-class DonationGoalCard extends StatefulWidget {
+class DonationGoalDetailsScreen extends StatefulWidget {
   final DonationGoal donationGoal;
-  final Function(bool selected) onSaveButtonPressed;
-  const DonationGoalCard(
-      {super.key,
-      required this.donationGoal,
-      required this.onSaveButtonPressed});
+  const DonationGoalDetailsScreen({super.key, required this.donationGoal});
+
   @override
-  State<DonationGoalCard> createState() => _DonationGoalCardState();
+  State<DonationGoalDetailsScreen> createState() =>
+      _DonationGoalDetailsScreenState();
 }
 
-class _DonationGoalCardState extends State<DonationGoalCard> {
+class _DonationGoalDetailsScreenState extends State<DonationGoalDetailsScreen> {
   bool saved = false;
 
-  @override
-  void initState() {
-    super.initState();
-    //   saved =
-  }
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(10),
-      child: GestureDetector(
-        onTap: () {
-          Navigator.of(context).push(MaterialPageRoute(builder: (context)=> DonationGoalDetailsScreen(donationGoal: widget.donationGoal)));
-        },
-        child: Container(
-          height: 300,
-          width: 300,
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(20),
-            color: AppColors.cardColor,
-          ),
-          child: Column(
-            children: [
-              Stack(
-                children: [
-                  image(),
-                  Positioned(
-                    right: 10,
-                    top: 10,
-                    child: saveButton(),
-                  ),
-                ],
-              ),
-              Container(
-                padding: const EdgeInsets.all(5),
-                width: 300,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(20),
-                ),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    const SizedBox(height: 10),
-                    title(),
-                    const SizedBox(height: 10),
-                    progress(),
-                    const SizedBox(height: 5),
-                    progressBar(),
-                    const SizedBox(height: 10),
-                    description(),
-                    const SizedBox(height: 10),
-                  ],
-                ),
-              ),
-            ],
+    return Scaffold(
+      appBar: AppBar(
+        title: Text(widget.donationGoal.title),
+
+        actions: [saveButton()],
+      ),
+      body: Padding(
+          padding: const EdgeInsets.all(20),
+          child: SingleChildScrollView(
+            scrollDirection: Axis.vertical,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              children:[
+               image(),
+                const SizedBox(height: 20,),
+                title(),
+                const SizedBox(height: 20,),
+
+                description(),
+                const SizedBox(height: 20,),
+
+                progress(),
+                const SizedBox(height: 20,),
+
+                progressBar(),
+
+                const SizedBox(height: 60,),
+
+               makeDonationButton(),
+                const SizedBox(height: 20,),
+
+              ],
+            ),
           ),
         ),
-      ),
+
     );
   }
+
 
   //========================================================================//
   //=============================== Save Button =============================//
@@ -89,20 +70,19 @@ class _DonationGoalCardState extends State<DonationGoalCard> {
           color: AppColors.scaffoldBackgroundColor.withOpacity(0.9)),
       child: IconButton(
         onPressed: () {
-          widget.onSaveButtonPressed(saved);
           setState(() {
             saved = !saved;
           });
         },
         icon: saved
             ? const Icon(
-                Icons.bookmark,
-                color: Colors.amber,
-              )
+          Icons.bookmark,
+          color: Colors.amber,
+        )
             : const Icon(
-                Icons.bookmark_border_outlined,
-                color: Colors.white,
-              ),
+          Icons.bookmark_border_outlined,
+          color: Colors.white,
+        ),
       ),
     );
   }
@@ -112,12 +92,12 @@ class _DonationGoalCardState extends State<DonationGoalCard> {
 
   Widget image() {
     return Container(
-      height: 140,
       width: double.infinity,
+      height: 200,
       decoration: BoxDecoration(
         borderRadius: const BorderRadius.only(
           topLeft: Radius.circular(20),
-          topRight: Radius.circular(20),
+          bottomLeft: Radius.circular(20),
         ),
         image: DecorationImage(
             image: ImageUtilityFunctions.getImage(widget.donationGoal.imageUrl),
@@ -151,7 +131,7 @@ class _DonationGoalCardState extends State<DonationGoalCard> {
       child: Text(
         widget.donationGoal.description,
         overflow: TextOverflow.ellipsis,
-        maxLines: 2,
+        maxLines: 10,
         style: const TextStyle(
           fontSize: 16,
           color: AppColors.brightTextColor,
@@ -200,6 +180,16 @@ class _DonationGoalCardState extends State<DonationGoalCard> {
           ),
         ],
       ),
+    );
+  }
+
+  Widget makeDonationButton(){
+    return ButtonWidget(onPressed: (){
+      Navigator.of(context).push(MaterialPageRoute(builder: (context) => MakeDonationScreen(donationGoal: widget.donationGoal)));
+
+    },
+      text: 'Make a donation',
+    
     );
   }
 }
