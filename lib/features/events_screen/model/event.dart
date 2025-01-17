@@ -1,5 +1,4 @@
 import 'package:uuid/uuid.dart';
-
 import '../../../common_mvc/common_model/firebase_models/firebase_facade.dart';
 
 class Event {
@@ -7,17 +6,19 @@ class Event {
   final String title;
   final String description;
   final String imageUrl;
-  bool isBookmarked;
-  bool isGoing;
+  List<String> bookmarkedBy; // List of user IDs who bookmarked the event
+  List<String> attending; // List of user IDs who are attending the event
 
   Event({
     String? id,
     required this.title,
     required this.description,
     required this.imageUrl,
-    this.isBookmarked = false,
-    this.isGoing = false,
-  }) : id = id ?? const Uuid().v4();
+    List<String>? bookmarkedBy,
+    List<String>? attending,
+  })  : id = id ?? const Uuid().v4(),
+        bookmarkedBy = bookmarkedBy ?? [],
+        attending = attending ?? [];
 
   // Firestore collection name
   static const String collectionName = "events";
@@ -29,8 +30,8 @@ class Event {
       'title': title,
       'description': description,
       'imageUrl': imageUrl,
-      'isBookmarked': isBookmarked,
-      'isGoing': isGoing,
+      'bookmarkedBy': bookmarkedBy,
+      'attending': attending,
     };
   }
 
@@ -41,23 +42,30 @@ class Event {
       title: map['title'] ?? '',
       description: map['description'] ?? '',
       imageUrl: map['imageUrl'] ?? '',
-      isBookmarked: map['isBookmarked'] ?? false,
-      isGoing: map['isGoing'] ?? false,
+      bookmarkedBy: List<String>.from(map['bookmarkedBy'] ?? []),
+      attending: List<String>.from(map['attending'] ?? []),
     );
   }
 
-  void toggleBookmark() {
-    isBookmarked = !isBookmarked;
+  void toggleBookmark(String userId) {
+    if (bookmarkedBy.contains(userId)) {
+      bookmarkedBy.remove(userId); // User is removing the bookmark
+    } else {
+      bookmarkedBy.add(userId); // User is bookmarking the event
+    }
   }
 
-  void toggleGoingStatus() {
-    isGoing = !isGoing;
+  void toggleAttending(String userId) {
+    if (attending.contains(userId)) {
+      attending.remove(userId); // User is no longer attending
+    } else {
+      attending.add(userId); // User is attending the event
+    }
   }
 
   // Event-specific CRUD operations
   static Future<void> addEvent(Event event) async {
-    await FirebaseFacade()
-        .saveDataToFirestore(collectionName, event.toFirestoreMap());
+    await FirebaseFacade().saveDataToFirestore(collectionName, event.toFirestoreMap());
   }
 
   static Future<List<Event>> fetchAllEvents() async {
@@ -66,8 +74,7 @@ class Event {
   }
 
   static Future<Event?> fetchEventById(String eventId) async {
-    final data = await FirebaseFacade()
-        .getDocumentByIdFromFirestore(collectionName, eventId);
+    final data = await FirebaseFacade().getDocumentByIdFromFirestore(collectionName, eventId);
     return data != null ? Event.fromFirestoreMap(eventId, data) : null;
   }
 
@@ -79,4 +86,6 @@ class Event {
   static Future<void> deleteEvent(String eventId) async {
     await FirebaseFacade().deleteDocumentFromFirestore(collectionName, eventId);
   }
+
+
 }
