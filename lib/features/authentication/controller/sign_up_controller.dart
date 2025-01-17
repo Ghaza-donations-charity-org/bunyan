@@ -34,10 +34,10 @@ class SignUpController {
   }
 
   SignUp signUpInstance = SignUp();
-  Future<Type> signUp({required String email, required
+  Future<FirebaseAuthResult> signUp({required String email, required
   String password}) async {
     FirebaseAuthResult firebaseAuthResult = await signUpInstance.signUp(email: email, password: password);
-    return FirebaseAuthResult;
+    return firebaseAuthResult;
   }
 
   void handleSignUpResult(FirebaseAuthResult signUpResult) {
