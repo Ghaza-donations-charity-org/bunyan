@@ -241,7 +241,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
           //now, sign up
           try {
             FirebaseAuthResult signUpResult = (await signUpController.signUp( email: emailController.text, password: passwordController.text)) as FirebaseAuthResult;
-            signUpController.handleSignUpResult(signUpResult);
+            signUpController.handleSignUpResult(signUpResult, emailController.text);
           } catch (e) {
             showDialog(
                 context: context,
