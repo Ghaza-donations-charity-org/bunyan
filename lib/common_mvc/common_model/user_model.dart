@@ -78,7 +78,6 @@ class UserModel {
     }
   }
 
-  // Add a user (admin only)
   Future<void> addUser(String userId, String email) async {
       final newUser = {
         'userId': userId,
