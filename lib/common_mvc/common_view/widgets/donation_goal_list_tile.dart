@@ -2,6 +2,7 @@ import 'package:ghaza_donations_app/common_mvc/common_controller/common_utility_
 import 'package:ghaza_donations_app/common_mvc/common_model/donation_goal.dart';
 import 'package:flutter/material.dart';
 
+import '../../../features/donation_goals/view/page/donation_goal_details_screen.dart';
 import '../theme/app_colors.dart';
 
 class DonationGoalListTile extends StatefulWidget {
@@ -31,7 +32,7 @@ class _DonationGoalListTileState extends State<DonationGoalListTile> {
       padding: const EdgeInsets.all(10),
       child: GestureDetector(
         onTap: () {
-          // Navigator.pushNamed(context, '/donationGoalDetails', arguments: donationGoal);
+          Navigator.of(context).push(MaterialPageRoute(builder: (context)=> DonationGoalDetailsScreen(donationGoal: widget.donationGoal)));
         },
         child: Container(
           height: 175,
