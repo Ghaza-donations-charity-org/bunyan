@@ -53,6 +53,7 @@ dependencies:
   provider: ^6.1.2
   firebase_messaging: ^15.1.6
   firebase_database: ^11.2.0
+  uuid: ^4.5.1
 
 dev_dependencies:
   flutter_test:

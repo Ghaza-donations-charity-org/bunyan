@@ -54,24 +54,28 @@ class EventController extends ChangeNotifier {
 
   Future<void> loadEvents() async {
     try {
+      // Fetch data from Firestore
       final rawEvents = await _firebaseFacade.getDataFromFirestore('events');
-      _events.clear(); // Clear the existing list
 
-      // Iterate over the rawEvents and map each entry to an Event
+      // Clear existing events
+      _events.clear();
+
+      // Iterate over rawEvents and map them to Event objects
       _events.addAll(
-        rawEvents.map((data) {
-          final id = data['id']; // Assuming each entry has 'id'
-          final eventData = data; // Assuming each entry has 'data'
+        rawEvents.map((doc) {
+          final id = doc['id'] ?? ''; // Safely get the ID
+          final eventData = doc; // Safely map the document fields
           return Event.fromFirestoreMap(id, eventData);
         }),
       );
 
-      notifyListeners(); // Notify the UI to refresh
+      notifyListeners(); // Notify UI to refresh
     } catch (error) {
-      // Handle errors
+      // Log the error for debugging
       debugPrint('Error loading events: $error');
     }
   }
+
 
   // Add a new event to Firestore
   Future<void> addEvent(Event event) async {

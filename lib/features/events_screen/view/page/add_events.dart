@@ -23,7 +23,7 @@ class _AddEventScreenState extends State<AddEventScreen> {
         description: _descriptionController.text,
         imageUrl: _imageUrlController.text,
         isBookmarked: false,
-        isGoing: false, id: '',
+        isGoing: false,
       );
 
       // Access EventController using Provider

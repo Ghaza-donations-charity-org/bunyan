@@ -1,3 +1,5 @@
+import 'package:uuid/uuid.dart';
+
 import '../../../common_mvc/common_model/firebase_models/firebase_facade.dart';
 
 class Event {
@@ -9,13 +11,13 @@ class Event {
   bool isGoing;
 
   Event({
-    required this.id,
+    String? id,
     required this.title,
     required this.description,
     required this.imageUrl,
     this.isBookmarked = false,
     this.isGoing = false,
-  });
+  }) : id = id ?? const Uuid().v4();
 
   // Firestore collection name
   static const String collectionName = "events";
@@ -23,6 +25,7 @@ class Event {
   // Convert Event to Firestore-compatible map
   Map<String, dynamic> toFirestoreMap() {
     return {
+      'id': id,
       'title': title,
       'description': description,
       'imageUrl': imageUrl,
