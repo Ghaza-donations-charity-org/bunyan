@@ -7,7 +7,6 @@ import 'common_mvc/common_model/user_model.dart';
 import 'common_mvc/common_view/theme/app_theme.dart';
 import 'features/authentication/view/widget/auth_wrapper.dart';
 import 'features/dummy_screen_for_testing.dart';
-import 'features/events_screen/controller/events_admin_controller.dart';
 import 'features/events_screen/controller/events_controller.dart';
 import 'features/make_donation_screen/controller/donation_controller.dart';
 import 'features/navigation_bar/controller/navigation_controller.dart';
@@ -43,9 +42,6 @@ class MyApp extends StatelessWidget {
         ),
         ChangeNotifierProvider(
           create: (_) => EventController(),
-        ),
-        ChangeNotifierProvider(
-          create: (_) => EventAdminController(),
         ),
       ],
       child: MaterialApp(

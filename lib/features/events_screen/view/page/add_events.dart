@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import '../../controller/events_admin_controller.dart';
+import '../../controller/events_controller.dart';
 import '../../model/event.dart';
 
 class AddEventScreen extends StatefulWidget {
@@ -27,7 +27,7 @@ class _AddEventScreenState extends State<AddEventScreen> {
       );
 
       // Access EventController using Provider
-      Provider.of<EventAdminController>(context, listen: false).addEvent(newEvent);
+      Provider.of<EventController>(context, listen: false).addEvent(newEvent);
 
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(content: Text('Event added successfully!')),
