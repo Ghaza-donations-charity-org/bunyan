@@ -53,20 +53,40 @@ import 'package:provider/provider.dart';
 import '../../../../common_mvc/common_controller/user_controller.dart';
 import '../../controller/events_controller.dart';
 import '../widget/event_card.dart';
+import 'add_events.dart';
 
-class EventsScreen extends StatelessWidget {
-  const EventsScreen({Key? key}) : super(key: key);
+class EventsScreen extends StatefulWidget {
+  const EventsScreen({super.key});
+
+  @override
+  State<EventsScreen> createState() => _EventsScreenState();
+}
+
+class _EventsScreenState extends State<EventsScreen> {
+  late EventController _eventController;
+
+  @override
+  void initState() {
+    super.initState();
+    // Fetch events when the screen initializes
+    _eventController = context.read<EventController>();
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      _eventController.loadEvents(); // Ensure events are fetched
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
     return MultiProvider(
       providers: [
-        ChangeNotifierProvider(
-          create: (_) => EventController()..loadEvents(), // Load events on initialization
-        ),
-        ChangeNotifierProvider(
-          create: (_) => Provider.of<UserControllerProvider>(context, listen: false),
-        ),
+        ChangeNotifierProvider(create: (_) => EventController()..loadEvents()),
+    // Ensure UserControllerProvider is properly provided
+    ChangeNotifierProvider(
+    create: (_) => UserControllerProvider(user: context.read<UserControllerProvider>().user)),
+
+        // ChangeNotifierProvider(
+        //   create: (_) => Provider.of<UserControllerProvider>(context, listen: false),
+        // ),
       ],
       child: Scaffold(
         appBar: AppBar(
@@ -116,6 +136,13 @@ class EventsScreen extends StatelessWidget {
               },
             );
           },
+        ),
+
+        floatingActionButton: FloatingActionButton(
+          onPressed: () {
+            Navigator.of(context).push(MaterialPageRoute(builder: (context)=> const AddEventScreen()));
+          },
+          child: const Icon(Icons.add),
         ),
       ),
     );
