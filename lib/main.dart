@@ -38,6 +38,8 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(
           create: (_) => EventController(),
         ),
+
+
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,

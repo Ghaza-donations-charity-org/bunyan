@@ -14,7 +14,7 @@ class UserControllerProvider extends ChangeNotifier{
     try {
       user.autoUpdatePoints(amount, triggerKey);
     } catch (e) {
-      print("Error: ${e.toString()}");
+      throw Exception("Error auto updating points: ${e.toString()}");
     }
   }
 
@@ -22,7 +22,7 @@ class UserControllerProvider extends ChangeNotifier{
     try {
       user.manipulatePoints(amount, verifier);
     } catch (e) {
-      print("Error: ${e.toString()}");
+      throw Exception("Error manipulating points: ${e.toString()}");
     }
   }
 
@@ -32,7 +32,7 @@ class UserControllerProvider extends ChangeNotifier{
       await user.loadPoints(); // Load points from the model
       notifyListeners(); // Notify the view about state changes
     } catch (e) {
-      print("Error loading user points: ${e.toString()}");
+      throw Exception("Error loading user points: ${e.toString()}");
     }
   }
   // Bookmark an event
@@ -41,7 +41,7 @@ class UserControllerProvider extends ChangeNotifier{
       await user.bookmarkEvent(eventId); // Delegate to the model
       notifyListeners(); // Notify listeners after state update
     } catch (e) {
-      print("Error bookmarking event: ${e.toString()}");
+      throw Exception("Error bookmarking event: ${e.toString()}");
     }
   }
 
@@ -51,7 +51,7 @@ class UserControllerProvider extends ChangeNotifier{
       await user.attendEvent(eventId); // Delegate to the model
       notifyListeners(); // Notify listeners after state update
     } catch (e) {
-      print("Error marking event as going: ${e.toString()}");
+      throw Exception("Error attending event: ${e.toString()}");
     }
   }
 }
