@@ -66,4 +66,28 @@ class FirebaseFacade {
   Future<void> deleteDocumentFromFirestore(String collection, String docId) {
     return _firestoreService.deleteDocument(collection, docId);
   }
+
+  // Add user ID to event's bookmarkedBy list
+  Future<void> addUserToEventBookmarkList(String eventId, String userId) async {
+    final eventData = await getDocumentByIdFromFirestore('events', eventId);
+    if (eventData != null) {
+      List<String> bookmarkedBy = List<String>.from(eventData['bookmarkedBy'] ?? []);
+      if (!bookmarkedBy.contains(userId)) {
+        bookmarkedBy.add(userId);
+        await updateDocumentInFirestore('events', eventId, {'bookmarkedBy': bookmarkedBy});
+      }
+    }
+  }
+
+  // Add user ID to event's attending list
+  Future<void> addUserToEventAttendingList(String eventId, String userId) async {
+    final eventData = await getDocumentByIdFromFirestore('events', eventId);
+    if (eventData != null) {
+      List<String> attending = List<String>.from(eventData['attending'] ?? []);
+      if (!attending.contains(userId)) {
+        attending.add(userId);
+        await updateDocumentInFirestore('events', eventId, {'attending': attending});
+      }
+    }
+  }
 }

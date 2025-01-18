@@ -35,4 +35,23 @@ class UserControllerProvider extends ChangeNotifier{
       print("Error loading user points: ${e.toString()}");
     }
   }
+  // Bookmark an event
+  Future<void> bookmarkEvent(String eventId) async {
+    try {
+      await user.bookmarkEvent(eventId); // Delegate to the model
+      notifyListeners(); // Notify listeners after state update
+    } catch (e) {
+      print("Error bookmarking event: ${e.toString()}");
+    }
+  }
+
+  // Mark an event as going
+  Future<void> attendEvent(String eventId) async {
+    try {
+      await user.attendEvent(eventId); // Delegate to the model
+      notifyListeners(); // Notify listeners after state update
+    } catch (e) {
+      print("Error marking event as going: ${e.toString()}");
+    }
+  }
 }
