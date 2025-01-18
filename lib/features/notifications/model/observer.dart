@@ -2,8 +2,6 @@ abstract class Observer {
   void update(String notificationMessage);
 }
 
-
-//ToDo: move the following to the admin app
 class NotificationSubject {
   final List<Observer> _observers = [];
 
@@ -21,3 +19,5 @@ class NotificationSubject {
     }
   }
 }
+
+

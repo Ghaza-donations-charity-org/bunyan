@@ -18,7 +18,6 @@ class NotificationManager {
     }
   }
 
-  // Simulate receiving a new notification (for testing)
   void newNotification(String message) {
     notifyObservers(message);
   }

@@ -21,7 +21,7 @@ class _ProfileDataWidgetState extends State<ProfileDataWidget> {
           child: Column(
             children: [
               Text(
-                "User name",
+                "Mohamed Raslan",
                 style: AppTextStyles.titleMedium,
               ),
               const SizedBox(height: 20),

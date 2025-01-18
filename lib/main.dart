@@ -2,7 +2,6 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'common_mvc/common_controller/user_controller.dart';
-import 'common_mvc/common_model/firebase_models/firebase_services_singleton.dart';
 import 'common_mvc/common_model/user_model.dart';
 import 'common_mvc/common_view/theme/app_theme.dart';
 import 'features/authentication/view/widget/auth_wrapper.dart';
@@ -26,10 +25,6 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return
-        // MaterialApp(
-        //   debugShowCheckedModeBanner: false,
-        //   theme: AppTheme.darkTheme,
-        //   home: const DummyScreenForTesting(),);
 
         MultiProvider(
       providers: [

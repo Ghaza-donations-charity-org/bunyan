@@ -17,7 +17,7 @@ NavigationBarItem profile = NavigationBarItem(
 
 NavigationBarItem settings = NavigationBarItem(
   title: 'Events',
-  icon: Icons.list,
+  icon: Icons.event,
 );
 
 NavigationBarItem notifications = NavigationBarItem(
